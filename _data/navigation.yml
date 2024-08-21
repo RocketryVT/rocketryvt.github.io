@@ -2,3 +2,11 @@
   link: /
 - name: About
   link: /about.html
+- name: Projects
+  link: /projects.html
+- name: Team
+  link: /team.html
+- name: Sponsors
+  link: /sponsors.html
+- name: Join
+  link: /join.html
