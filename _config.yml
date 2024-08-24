@@ -1,3 +1,4 @@
+source: pages
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
