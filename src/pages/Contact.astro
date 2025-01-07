@@ -1,0 +1,152 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<style>
+    .flex-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+        padding: 4rem;
+    }
+    .info-cell, .form-cell {
+        flex: 1;
+        padding-left: 20px;
+    }
+
+    .name-fields div {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .name-fields div {
+        flex: 1;
+        margin-right: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-cell form {
+      display: flex;
+      flex-direction: column;
+    }
+    .form-cell form .name-fields {
+      display: flex;
+      justify-content: space-between;
+    }
+    .form-cell form .name-fields div {
+      flex: 1;
+      margin-right: 10px;
+    }
+    .form-cell form .name-fields input:last-child {
+      margin-right: 0;
+    }
+    .form-cell form input, .form-cell form select, .form-cell form textarea {
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 16px;
+    }
+    .form-cell form button {
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .learn-more {
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
+        background-color: transparent;
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 6.4px;
+        border: 2px solid black;
+        text-align: center;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .learn-more:hover {
+        background-color: black;
+        color: white;
+    }
+
+    .info-bold {
+        color: rgb(134, 31, 65);
+        font-family: 'Poppins', sans-serif;
+        font-size: 21px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 37.8px;
+        text-decoration-style: solid;
+    }
+  </style>
+
+<script>
+    function handleSubmit(event: any) {
+        event.preventDefault();
+        const firstName = (document.getElementById('first-name') as HTMLInputElement)?.value || '';
+        const lastName = (document.getElementById('last-name') as HTMLInputElement)?.value || '';
+        const email = (document.getElementById('email') as HTMLInputElement)?.value || '';
+        const inquiryType = (document.getElementById('inquiry-type') as HTMLSelectElement)?.value || '';
+        const message = (document.getElementById('message') as HTMLTextAreaElement)?.value || '';
+
+        const subject = `Inquiry from ${firstName} ${lastName}: ${inquiryType}`;
+        const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\nInquiry Type: ${inquiryType}\n\nMessage:\n${message}`;
+
+        const mailtoLink = `mailto:rocketry.vt@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoLink;
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.addEventListener('submit', handleSubmit);
+        }
+    });
+</script>
+  
+<BaseLayout>
+    <div class="flex-container">
+      <div class="info-cell">
+        <p><strong class="info-bold">EMAIL ADDRESS</strong><br>rocketry.vt@gmail.com</p>
+        <p><strong class="info-bold">MAILING ADDRESS</strong><br>Randolph Hall, RM 215, Virginia Tech<br>460 Old Turner St.<br>Blacksburg, VA 24061-0203</p>
+        <p><strong class="info-bold">LAB ADDRESS</strong><br>Advanced Engineering Design Lab<br>501 Industrial Park Road<br>Blacksburg, VA 24060</p>
+        </div>
+      <div class="form-cell">
+        <h2 class="info-bold">Contact Us</h2>
+        <br>
+        <p>Fill out the inquiry form below to contact Rocketry at Virginia Tech.</p>
+        <br>
+        <p>Name (required)</p>
+        <form id="contactForm">
+          <div class="name-fields">
+            <div>
+              <label for="first-name">First Name</label>
+              <input type="text" id="first-name" name="first-name" required>
+            </div>
+            <div>
+              <label for="last-name">Last Name</label>
+              <input type="text" id="last-name" name="last-name">
+            </div>
+          </div>
+          
+          <label for="email">Email (required)</label>
+          <input type="email" id="email" name="email" required>
+          
+          <label for="inquiry-type">Inquiry Type</label>
+          <select id="inquiry-type" name="inquiry-type" required>
+            <option value="" disabled selected>Select an option</option>
+            <option value="sponsorship">Sponsorship</option>
+            <option value="membership">Membership</option>
+            <option value="Outreach">Outreach</option>
+            <option value="general">General Inquiry</option>
+          </select>
+          
+          <label for="message">Message (required)</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+          
+          <button type="submit" class="learn-more">Submit</button>
+        </form>
+      </div>
+    </div>
+</BaseLayout>

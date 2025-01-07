@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Picture from "astro/components/Picture.astro";
+
+import daniel from "../../assets/images/Aero/Daniel.jpg";
+import rocket3 from "../../assets/images/Aero/Rocket3.png";
+import solidBoosterContingency from "../../assets/images/Aero/SolidBoosterContingency.jpeg";
+import carbonFiber from "../../assets/images/Aero/carbon-fiber-bending.gif";
+
+---
+
+<style>
+    .section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 29px;
+        padding: 17px;
+    }
+    .section picture,
+    .section img {
+        display: block;
+        margin: 0 auto;
+        width: 50%;
+        height: auto;  
+    }
+
+    .header {
+        font-family: 'Roboto', sans-serif;
+        font-size: 46.24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 57px;
+        margin-block-start: 32px;
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+
+    .bounded {
+        max-width: 30%;
+        margin-left: auto; 
+        margin-right: auto;
+        text-align: center;
+    }
+
+</style>
+
+<BaseLayout>
+  <div class="section">
+    <h2 class="header">Aerostructures</h2>
+    <Picture src={daniel} alt="Daniel" />
+    <b style="font-size: 24px; font-weight: 400; margin-top: 10px;">Team Lead: Daniel Young</b>
+    <br>
+    <p class="bounded">Daniel Young is a sophomore studying Aerospace Engineering. This will be his second year on Rocketry. Daniel is also fluent in Spanish and in his time outside Rocketry Daniel has been learning Arabic.</p>
+  </div>
+  
+  <div class="section">
+    <Picture src={rocket3} alt="Rocket3" />
+    <br>
+    <p class="bounded">The team is currently developing a launch vehicle structure with a semi-modular architecture that can be reused, modified, and optimized year-over-year to meet the future team’s goals such as flying hybrid or liquid bipropellant propulsion systems.</p>
+  </div>
+  
+  <div class="section">
+    <Picture src={solidBoosterContingency} alt="Solid Booster Contingency" />
+    <br>
+    <p class="bounded">The vehicle consists of an internal aluminum structure for thrust and motor retention as well as a composite aeroshell to handle aerodynamic and compressive inertial loads. About 95% of the team’s structural components are made in-house, including the team’s mass-optimized thrust structure, carbon fiber body tubes, and carbon fiber sandwich panel fins.</p>
+    <br>
+    <Picture src={carbonFiber} alt="Carbon Fiber" />
+  </div>
+</BaseLayout>

@@ -1,0 +1,47 @@
+---
+import { Picture } from 'astro:assets';
+import spaceport_america_2023 from '../assets/images/DSC09439.jpeg';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+<style>
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .text-cell {
+    flex: 1;
+    padding: 20px;
+  }
+  .image-cell {
+    flex: 1;
+    padding: 20px;
+  }
+  .image-cell img {
+    width: 100%;
+    height: auto;
+  }
+  .header {
+    font-size: 44.8px;
+    font-style: normal;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    line-height: 58.2px;
+    color: rgb(134, 31, 65);
+  }
+</style>
+
+<div class="flex-container">
+  <div class="text-cell">
+    <div class="header">
+      <h2>Mission</h2>
+    </div>
+    <p>Rocketry At Virginia Tech competes in the 10k COTS category of the Spaceport America Cup, where we strive to achieve a 10,000-foot apogee with a commercial off-the-shelf motor. In pursuit of this goal, students gain invaluable hands-on engineering experience and develop their skills.</p>
+  </div>
+  <div class="image-cell">
+    <Picture src={spaceport_america_2023} alt="Rocketry at Virginia Tech" />
+  </div>
+</div>
+</BaseLayout>

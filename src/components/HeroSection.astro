@@ -1,0 +1,97 @@
+---
+import Picture from "astro/components/Picture.astro";
+const { title, description, image, link, flip } = Astro.props;
+---
+
+<style>
+  .section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f4f4f4;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .section-text {
+    flex: 1;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    text-align: left;
+    flex-direction: column;
+  }
+
+  .section-title {
+    font-family: 'Roboto';
+    font-size: 44.8px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 58.2px;
+    text-size-adjust: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .section-description {
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: normal;
+    line-height: 28.8px;
+    text-size-adjust: 100%;
+    margin-bottom: 1rem;
+    max-width: 400px;
+  }
+
+  .section-image {
+    flex: 1;
+    max-width: 50%;
+    padding-right: 2rem;
+  }
+
+  .section-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .learn-more {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: transparent;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6.4px;
+    border: 2px solid black;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .learn-more:hover {
+    background-color: black;
+    color: white;
+  }
+
+  .flipped {
+    flex-direction: row-reverse;
+  }
+
+</style>
+
+<div class={`section ${flip ? 'flipped' : ''}`}>
+  <div class="section-text">
+    <div class="section-title">
+      <h2>{title}</h2>
+    </div>
+    <div class="section-description">
+      <p>{description}</p>
+    </div>
+    <a href={link} class="learn-more">LEARN MORE</a>
+  </div>
+  <div class="section-image">
+    <Picture src={image} alt="Section Image">
+  </div>
+</div>

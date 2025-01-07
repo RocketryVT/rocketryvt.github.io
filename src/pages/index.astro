@@ -1,0 +1,163 @@
+---
+import Picture from 'astro/components/Picture.astro';
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Instagram from '../components/Instagram.astro';
+import HeroSection from '../components/HeroSection.astro';
+
+import experience from '../assets/images/experience.jpg';
+import SAC2018 from '../assets/images/SAC2018.jpg';
+import community from '../assets/images/DSC00049.jpg';
+---
+<BaseLayout>
+	<style>
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+      background-color: black;
+    }
+
+    .main-title {
+      text-size-adjust: 100%;
+      font-family: 'Roboto', sans-serif;
+      font-size: 64px;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: normal;
+      line-height: 56.7016px;
+      text-transform: none;
+      white-space: pre-wrap;
+    }
+
+    .subtitle {
+      text-size-adjust: 100%;
+      font-family: 'Roboto', sans-serif;
+      font-size: 22.0048px;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: normal;
+      line-height: 30.0674px;
+      text-transform: none;
+      white-space: pre-wrap;
+    }
+
+  .section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f4f4f4;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 5rem;
+    padding-right: 5rem;
+  }
+
+  .section-text {
+    flex: 1;
+    padding-right: 2rem;
+  }
+
+  .section-title {
+    font-family: 'Roboto';
+    font-size: 44.8px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 58.2px;
+    text-size-adjust: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .section-description {
+    font-family: 'Poppins';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: normal;
+    line-height: 28.8px;
+    text-size-adjust: 100%;
+    margin-bottom: 1rem;
+    max-width: 400px;
+  }
+
+  .section-image {
+    flex: 1;
+    max-width: 50%;
+  }
+
+  .section-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .learn-more {
+    display: inline-block;
+    padding: 0.7rem 1.169rem;
+    background-color: transparent;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6.4px;
+    border: 2px solid black;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .learn-more:hover {
+    background-color: black;
+    color: white;
+  }
+    
+</style>
+<div class="content-wrapper">
+    <video class="background-video" autoplay loop muted>
+      <source src="/path/to/your/video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <h1 class="main-title">ROCKETRY AT VIRGINIA TECH</h1>
+    <h4 class="subtitle">Pushing the limits of high-powered rocketry.</h4>
+  </div>
+
+<HeroSection 
+  title="HANDS-ON ENGINEERING EXPERIENCE" 
+  description="Giving Virginia Tech students the aerospace and engineering opportunities that are only possible in a lab." 
+  image={experience}
+  link="/team"
+  flip={false} 
+/>
+
+<HeroSection 
+  title="FROM BLACKSBURG TO NEW MEXICO" 
+  description="Rocketry at Virginia Tech competes in the Spaceport America Cup competition where we fly rockets to a target altitude and compete with teams from all around the world."
+  image={SAC2018}
+  link="/projects"
+  flip={true}
+/>
+
+<HeroSection 
+  title="GIVING BACK TO THE COMMUNITY" 
+  description="Working with the university and local organizations to educate children and the community about high-powered rocketry and encourage interest in STEAM." 
+  image={community}
+  link="/outreach"
+  flip={false}
+/>
+
+<Instagram />
+
+</BaseLayout>
+ 

@@ -1,0 +1,29 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+const { pageTitle = "Rocketry at Virginia Tech" } = Astro.props;
+import favicon from "../assets/logo/favicon.ico";
+import favicon16 from "../assets/logo/favicon-16x16.png";
+import favicon32 from "../assets/logo/favicon-32x32.png";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href={favicon} />
+    <link rel="icon" type="image/png" sizes="16x16" href={favicon16.src} />
+    <link rel="icon" type="image/png" sizes="32x32" href={favicon32.src} />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+    <script>
+      import "../scripts/menu.js";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Picture from "astro/components/Picture.astro";
+
+import ben from "../../assets/images/Avionics/Ben.jpg";
+import ads2022 from "../../assets/images/Avionics/ads2022-2023.gif";
+import ads_gear from "../../assets/images/Avionics/ads-gear-old.gif";
+---
+
+<style>
+  .section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 29px;
+    padding: 17px;
+  }
+  .section picture,
+  .section img {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    height: auto;  
+  }
+  .bounded {
+    max-width: 30%;
+    margin-left: auto; 
+    margin-right: auto;
+    text-align: center;
+  }
+  .header {
+        font-family: 'Roboto', sans-serif;
+        font-size: 46.24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 57px;
+        margin-block-start: 32px;
+        margin-top: 32px;
+        margin-bottom: 32px;
+    }
+</style>
+
+<BaseLayout>
+  <div class="section">
+    <h2 class="header">Avionics</h2>
+    <Picture src={ben} alt="Ben Anderson" />
+    <b style="font-size: 24px; font-weight: 400; margin-top: 10px;">Team Lead: Ben Anderson</b>
+    <br>
+    <p class="bounded">Ben Anderson is a junior studying Mechanical Engineering. He has been on Avionics since joining the team freshman year and became lead last January. Outside of Rocketry, he enjoys playing tennis and hiking.</p>
+  </div>
+  
+  <div class="section">
+    <Picture src={ads2022} alt="ADS 2022" />
+    <br>
+    <p class="bounded">The Avionics subteam is responsible for the successful flight cycle from launch to recovery. Our Communication and Telemetry system is used as a backup launch control system and as a tracking device. Our Active Drag System (ADS) has proudly assisted the rocket to achieve the target altitude by controlling the drag actively using airbrakes for the past years.</p>
+  </div>
+  
+  <div class="section">
+    <Picture src={ads_gear} alt="ADS Gear" />
+    <br>
+    <p class="bounded">The Active Drag System is the culmination of several years of research and development in perfecting our altitude precision for competition. The team uses everything from computer science in designing the algorithm, to electrical engineering in designing the circuits, and even mechanical engineering and aerospace engineering when integrating the subsystem into the rocket. Each year the system is iterated upon and improved so that we may do better in competition, and accurately hit that 10,000 foot goal.</p>
+  </div>
+</BaseLayout>
