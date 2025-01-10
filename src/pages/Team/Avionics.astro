@@ -1,69 +1,81 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Picture from "astro/components/Picture.astro";
+import Image from "astro/components/Image.astro";
 
-import ben from "../../assets/images/Avionics/Ben.jpg";
-import ads2022 from "../../assets/images/Avionics/ads2022-2023.gif";
-import ads_gear from "../../assets/images/Avionics/ads-gear-old.gif";
+import ads_flaps from "../../assets/images/Avionics/ads_flaps.gif";
+import flaps_ground from "../../assets/images/Avionics/flaps-ground.gif";
+import me_boys from "../../assets/images/Avionics/me_boys.jpeg";
+import me_rocket from "../../assets/images/Avionics/me_rocket.jpg";
+import old_ads_pcb from "../../assets/images/Avionics/old-ads-pcb.png";
 ---
 
 <style>
-  .section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 29px;
-    padding: 17px;
+  .masonry {
+    column-count: 2;
+    column-gap: 1rem;
   }
-  .section picture,
-  .section img {
-    display: block;
-    margin: 0 auto;
-    width: 50%;
-    height: auto;  
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
   }
-  .bounded {
-    max-width: 30%;
-    margin-left: auto; 
-    margin-right: auto;
-    text-align: center;
-  }
-  .header {
-        font-family: 'Roboto', sans-serif;
-        font-size: 46.24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 57px;
-        margin-block-start: 32px;
-        margin-top: 32px;
-        margin-bottom: 32px;
-    }
 </style>
 
 <BaseLayout>
-  <div class="section">
-    <h2 class="header">Avionics</h2>
-    <Picture src={ben} alt="Ben Anderson" />
-    <b style="font-size: 24px; font-weight: 400; margin-top: 10px;">Team Lead: Ben Anderson</b>
-    <br>
-    <p class="bounded">Ben Anderson is a junior studying Mechanical Engineering. He has been on Avionics since joining the team freshman year and became lead last January. Outside of Rocketry, he enjoys playing tennis and hiking.</p>
+<section class="container mx-auto px-32 py-8 text-center">
+  <h1 class="text-6xl font-bold mb-8">Avionics</h1>
+  <div class="flex flex-col md:flex-row items-start mb-8">
+    <div class="md:w-4/12 p-4">
+      <Image
+        src={me_rocket}
+        alt="Dawsyn Schraiber"
+        class="w-full h-auto mb-4"
+      />
+      <p class="text-lg text-left">
+        <span class="font-bold">Team Lead:</span> Dawsyn Schraiber<br />Senior
+        in Computer Engineering
+      </p>
+    </div>
+    <div class="md:w-4/5 p-4">
+      <p class="text-lg text-left">
+        The Avionics subteam’s responsibilities encompass the rocket’s overall
+        electronic and software design/implementation. This includes, but is not
+        limited to, the Active Drag System’s PCB and algorithm, the Payload PCB
+        and telemetry project, and the Recovery Bay wiring and battery
+        selection.
+      </p>
+      <p class="text-lg text-left mt-4">
+        The goal for Avionics this year is to develop a more cohesive and
+        quality electronics stack with common design principles for the
+        2024-2025 competition year. Gone are the days using the Beaglebone as a
+        primary flight computer and in its place custom RP2040-based PCBs with
+        proper power management and reusable, modular software components. Know
+        that while this is a “move fast and break things” type of design team,
+        it will be critical to consider how to verify and validate these custom
+        projects from the ground before they are ever placed in a rocket.
+      </p>
+    </div>
   </div>
-  
-  <div class="section">
-    <Picture src={ads2022} alt="ADS 2022" />
-    <br>
-    <p class="bounded">The Avionics subteam is responsible for the successful flight cycle from launch to recovery. Our Communication and Telemetry system is used as a backup launch control system and as a tracking device. Our Active Drag System (ADS) has proudly assisted the rocket to achieve the target altitude by controlling the drag actively using airbrakes for the past years.</p>
+  <div class="masonry">
+    <div class="masonry-item">
+      <Image src={flaps_ground} alt="Flaps Ground Test" class="w-1/2 h-auto" />
+      <p class="mt-2 text-left">Flaps Ground Test</p>
+    </div>
+    <div class="masonry-item">
+      <Image src={me_boys} alt="Me and Rocket" class="w-full h-auto" />
+      <p class="mt-2 text-left">Spaceport 2024 Avionics</p>
+    </div>
+    <div class="masonry-item">
+      <Image
+        src={ads_flaps}
+        alt="Active Drag System Flaps"
+        class="w-full h-auto"
+      />
+      <p class="mt-2 text-left">Active Drag System Flaps</p>
+    </div>
+    <div class="masonry-item">
+      <Image src={old_ads_pcb} alt="Old ADS PCB" class="w-full h-auto" />
+      <p class="mt-2 text-left">Old ADS PCB</p>
+    </div>
   </div>
-  
-  <div class="section">
-    <Picture src={ads_gear} alt="ADS Gear" />
-    <br>
-    <p class="bounded">The Active Drag System is the culmination of several years of research and development in perfecting our altitude precision for competition. The team uses everything from computer science in designing the algorithm, to electrical engineering in designing the circuits, and even mechanical engineering and aerospace engineering when integrating the subsystem into the rocket. Each year the system is iterated upon and improved so that we may do better in competition, and accurately hit that 10,000 foot goal.</p>
-  </div>
+</section>
 </BaseLayout>

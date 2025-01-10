@@ -3,136 +3,128 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <style>
-    .flex-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-        padding: 4rem;
-    }
-    .info-cell, .form-cell {
-        flex: 1;
-        padding-left: 20px;
-    }
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 4rem;
+  }
+  .info-cell,
+  .form-cell {
+    flex: 1;
+    padding-left: 20px;
+    min-width: 300px;
+  }
 
-    .name-fields div {
-        display: flex;
-        flex-direction: column;
-    }
+  .name-fields div {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .name-fields div {
-        flex: 1;
-        margin-right: 10px;
-        display: flex;
-        flex-direction: column;
-    }
+  .name-fields div {
+    flex: 1;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+  }
 
-    .form-cell form {
-      display: flex;
-      flex-direction: column;
-    }
-    .form-cell form .name-fields {
-      display: flex;
-      justify-content: space-between;
-    }
-    .form-cell form .name-fields div {
-      flex: 1;
-      margin-right: 10px;
-    }
-    .form-cell form .name-fields input:last-child {
-      margin-right: 0;
-    }
-    .form-cell form input, .form-cell form select, .form-cell form textarea {
-      margin-bottom: 10px;
-      padding: 10px;
-      font-size: 16px;
-    }
-    .form-cell form button {
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+  .form-cell form {
+    display: flex;
+    flex-direction: column;
+  }
+  .form-cell form .name-fields {
+    display: flex;
+    justify-content: space-between;
+  }
+  .form-cell form .name-fields div {
+    flex: 1;
+    margin-right: 10px;
+  }
+  .form-cell form .name-fields input:last-child {
+    margin-right: 0;
+  }
+  .form-cell form input,
+  .form-cell form select,
+  .form-cell form textarea {
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-cell form button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+  }
 
-    .learn-more {
-        display: inline-block;
-        padding: 1rem 2rem;
-        font-size: 1.2rem;
-        background-color: transparent;
-        color: black;
-        text-decoration: none;
-        font-weight: bold;
-        border-radius: 6.4px;
-        border: 2px solid black;
-        text-align: center;
-        transition: background-color 0.3s, color 0.3s;
-    }
+  .learn-more {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background-color: transparent;
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 6.4px;
+    border: 2px solid black;
+    text-align: center;
+    transition:
+      background-color 0.3s,
+      color 0.3s;
+  }
 
-    .learn-more:hover {
-        background-color: black;
-        color: white;
-    }
+  .learn-more:hover {
+    background-color: black;
+    color: white;
+  }
 
-    .info-bold {
-        color: rgb(134, 31, 65);
-        font-family: 'Poppins', sans-serif;
-        font-size: 21px;
-        font-style: normal;
-        font-weight: 300;
-        line-height: 37.8px;
-        text-decoration-style: solid;
-    }
-  </style>
+  .info-bold {
+    color: rgb(134, 31, 65);
+    font-family: "Poppins", sans-serif;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 37.8px;
+    text-decoration-style: solid;
+  }
 
-<script>
-    function handleSubmit(event: any) {
-        event.preventDefault();
-        const firstName = (document.getElementById('first-name') as HTMLInputElement)?.value || '';
-        const lastName = (document.getElementById('last-name') as HTMLInputElement)?.value || '';
-        const email = (document.getElementById('email') as HTMLInputElement)?.value || '';
-        const inquiryType = (document.getElementById('inquiry-type') as HTMLSelectElement)?.value || '';
-        const message = (document.getElementById('message') as HTMLTextAreaElement)?.value || '';
+  .section-title {
+    color: rgb(134, 31, 65);
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  .text-maroon {
+    color: rgb(134, 31, 65);
+  }
+</style>
 
-        const subject = `Inquiry from ${firstName} ${lastName}: ${inquiryType}`;
-        const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\nInquiry Type: ${inquiryType}\n\nMessage:\n${message}`;
-
-        const mailtoLink = `mailto:rocketry.vt@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        window.location.href = mailtoLink;
-    }
-    document.addEventListener('DOMContentLoaded', () => {
-        const form = document.getElementById('contactForm');
-        if (form) {
-            form.addEventListener('submit', handleSubmit);
-        }
-    });
-</script>
-  
 <BaseLayout>
+  <div class="container mx-auto px-4">
     <div class="flex-container">
-      <div class="info-cell">
-        <p><strong class="info-bold">EMAIL ADDRESS</strong><br>rocketry.vt@gmail.com</p>
-        <p><strong class="info-bold">MAILING ADDRESS</strong><br>Randolph Hall, RM 215, Virginia Tech<br>460 Old Turner St.<br>Blacksburg, VA 24061-0203</p>
-        <p><strong class="info-bold">LAB ADDRESS</strong><br>Advanced Engineering Design Lab<br>501 Industrial Park Road<br>Blacksburg, VA 24060</p>
-        </div>
       <div class="form-cell">
         <h2 class="info-bold">Contact Us</h2>
-        <br>
-        <p>Fill out the inquiry form below to contact Rocketry at Virginia Tech.</p>
-        <br>
+        <br />
+        <p>
+          Fill out the inquiry form below to contact Rocketry at Virginia Tech.
+        </p>
+        <br />
         <p>Name (required)</p>
         <form id="contactForm">
           <div class="name-fields">
             <div>
               <label for="first-name">First Name</label>
-              <input type="text" id="first-name" name="first-name" required>
+              <input type="text" id="first-name" name="first-name" required />
             </div>
             <div>
               <label for="last-name">Last Name</label>
-              <input type="text" id="last-name" name="last-name">
+              <input type="text" id="last-name" name="last-name" />
             </div>
           </div>
-          
+
           <label for="email">Email (required)</label>
-          <input type="email" id="email" name="email" required>
-          
+          <input type="email" id="email" name="email" required />
+
           <label for="inquiry-type">Inquiry Type</label>
           <select id="inquiry-type" name="inquiry-type" required>
             <option value="" disabled selected>Select an option</option>
@@ -141,12 +133,99 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             <option value="Outreach">Outreach</option>
             <option value="general">General Inquiry</option>
           </select>
-          
+
           <label for="message">Message (required)</label>
           <textarea id="message" name="message" rows="4" required></textarea>
-          
+
           <button type="submit" class="learn-more">Submit</button>
         </form>
       </div>
+      <div class="info-cell">
+        <p>
+          <strong class="info-bold">EMAIL ADDRESS</strong><br
+          />rocketry.vt@gmail.com
+        </p>
+        <p>
+          <strong class="info-bold">MAILING ADDRESS</strong><br />Advanced
+          Engineering Design Lab<br />501 Industrial Park Road<br />Blacksburg,
+          VA 24060
+        </p>
+      </div>
     </div>
+    <div class="details">
+      <h2 class="section-title">Who can join Rocketry at Virginia Tech?</h2>
+      <p>
+        Rocketry at Virginia Tech is open to all Virginia Tech students of any
+        major, any year, and both undergraduate and graduate levels. The team
+        relies on a variety of engineering disciplines to be successful,
+        including aerospace, mechanical, electrical, industrial, systems,
+        computer, and materials science.
+      </p>
+
+      <h2 class="section-title">When and how do I join the team?</h2>
+      <p>
+        Rocketry at Virginia Tech recruits new members at the beginning of the
+        fall semester. Keep an eye out for us at university involvement events
+        like GobblerFest! Our application opens in late August and will be
+        announced here on our website and all of our social media pages. If you
+        miss our fall recruitment cycle, watch our social media pages! Sometimes
+        the team will post listings for specific positions we need filled on the
+        team.
+      </p>
+
+      <h2 class="section-title">
+        What if I have no prior rocketry experience?
+      </h2>
+      <p>
+        Some of our most successful members had no prior experience before
+        joining! Rocketry at Virginia Tech is a learning experience as much as
+        it is a competition team, and we provide our members with many
+        opportunities to learn and obtain hands-on experience.
+      </p>
+
+      <h2 class="section-title">How do I get more information?</h2>
+      <p>
+        During our fall recruitment cycle we attend a variety of university
+        events and host our own information sessions where you can learn more
+        about our project and talk with Rocketry at Virginia Tech’s leadership
+        team. If you are interested in seeing our lab space, visit the <a
+        href="https://eng.vt.edu/academics/aerospace-engineering-design-lab.html"
+        target="_blank"
+        class="text-maroon underline"
+      >
+        Aerospace Engineering Design Lab (AEDL)
+      </a> website to organize a tour of the space
+        that hosts our team!
+      </p>
+    </div>
+  </div>
 </BaseLayout>
+
+<script>
+  function handleSubmit(event: any) {
+    event.preventDefault();
+    const firstName =
+      (document.getElementById("first-name") as HTMLInputElement)?.value || "";
+    const lastName =
+      (document.getElementById("last-name") as HTMLInputElement)?.value || "";
+    const email =
+      (document.getElementById("email") as HTMLInputElement)?.value || "";
+    const inquiryType =
+      (document.getElementById("inquiry-type") as HTMLSelectElement)?.value ||
+      "";
+    const message =
+      (document.getElementById("message") as HTMLTextAreaElement)?.value || "";
+
+    const subject = `Inquiry from ${firstName} ${lastName}: ${inquiryType}`;
+    const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\nInquiry Type: ${inquiryType}\n\nMessage:\n${message}`;
+
+    const mailtoLink = `mailto:rocketry.vt@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contactForm");
+    if (form) {
+      form.addEventListener("submit", handleSubmit);
+    }
+  });
+</script>

@@ -1,7 +1,9 @@
 ---
-import { Picture } from 'astro:assets';
+import { Picture, Image } from 'astro:assets';
 import spaceport_america_2023 from '../assets/images/DSC09439.jpeg';
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+import Button from '../components/Button.astro';
 ---
 
 <BaseLayout>
@@ -10,18 +12,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
   }
   .text-cell {
     flex: 1;
-    padding: 20px;
+    padding: 70px;
   }
   .image-cell {
     flex: 1;
     padding: 20px;
+    overflow: hidden;
   }
   .image-cell img {
     width: 100%;
     height: auto;
+    object-fit: cover;
+    transform: scale(1.5);
   }
   .header {
     font-size: 44.8px;
@@ -31,17 +37,28 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     line-height: 58.2px;
     color: rgb(134, 31, 65);
   }
+  p {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    line-height: 32px;
+    color: rgb(0, 0, 0);
+  }
 </style>
 
 <div class="flex-container">
   <div class="text-cell">
     <div class="header">
-      <h2>Mission</h2>
+      <h2>Our Mission</h2>
     </div>
-    <p>Rocketry At Virginia Tech competes in the 10k COTS category of the Spaceport America Cup, where we strive to achieve a 10,000-foot apogee with a commercial off-the-shelf motor. In pursuit of this goal, students gain invaluable hands-on engineering experience and develop their skills.</p>
+    <br>
+    <p>Rocketry At Virginia Tech competes in the 10k COTS category of the Spaceport America Cup, where we strive to achieve a 10,000-foot apogee with a commercial off-the-shelf motor. In pursuit of this goal, students gain hands-on technical and teamwork experience.</p>
+    <br>
+    <Button url="https://spaceportamericacup.com/" text="Learn more about Spaceport" new_tab = true/>
   </div>
   <div class="image-cell">
-    <Picture src={spaceport_america_2023} alt="Rocketry at Virginia Tech" />
+    <Image src={spaceport_america_2023} alt="Rocketry at Virginia Tech"/>
   </div>
 </div>
 </BaseLayout>

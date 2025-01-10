@@ -1,76 +1,97 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Picture from "astro/components/Picture.astro";
+import Image from "astro/components/Image.astro";
 
 import daniel from "../../assets/images/Aero/Daniel.jpg";
+import fins from "../../assets/images/Aero/Fins.jpg";
+import MeandRocket from "../../assets/images/Aero/MeandRocket.jpg";
 import rocket3 from "../../assets/images/Aero/Rocket3.png";
 import solidBoosterContingency from "../../assets/images/Aero/SolidBoosterContingency.jpeg";
+import ThrustStructurePic from "../../assets/images/Aero/ThrustStructurePic.jpg";
+import Tube from "../../assets/images/Aero/Tube.jpg";
 import carbonFiber from "../../assets/images/Aero/carbon-fiber-bending.gif";
-
 ---
 
 <style>
-    .section {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-bottom: 20px;
-        text-align: center;
-        font-family: 'Poppins', sans-serif;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 300;
-        line-height: 29px;
-        padding: 17px;
-    }
-    .section picture,
-    .section img {
-        display: block;
-        margin: 0 auto;
-        width: 50%;
-        height: auto;  
-    }
-
-    .header {
-        font-family: 'Roboto', sans-serif;
-        font-size: 46.24px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 57px;
-        margin-block-start: 32px;
-        margin-top: 32px;
-        margin-bottom: 32px;
-    }
-
-    .bounded {
-        max-width: 30%;
-        margin-left: auto; 
-        margin-right: auto;
-        text-align: center;
-    }
-
+  .masonry {
+    column-count: 2;
+    column-gap: 1rem;
+  }
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
 </style>
 
 <BaseLayout>
-  <div class="section">
-    <h2 class="header">Aerostructures</h2>
-    <Picture src={daniel} alt="Daniel" />
-    <b style="font-size: 24px; font-weight: 400; margin-top: 10px;">Team Lead: Daniel Young</b>
-    <br>
-    <p class="bounded">Daniel Young is a sophomore studying Aerospace Engineering. This will be his second year on Rocketry. Daniel is also fluent in Spanish and in his time outside Rocketry Daniel has been learning Arabic.</p>
-  </div>
-  
-  <div class="section">
-    <Picture src={rocket3} alt="Rocket3" />
-    <br>
-    <p class="bounded">The team is currently developing a launch vehicle structure with a semi-modular architecture that can be reused, modified, and optimized year-over-year to meet the future team’s goals such as flying hybrid or liquid bipropellant propulsion systems.</p>
-  </div>
-  
-  <div class="section">
-    <Picture src={solidBoosterContingency} alt="Solid Booster Contingency" />
-    <br>
-    <p class="bounded">The vehicle consists of an internal aluminum structure for thrust and motor retention as well as a composite aeroshell to handle aerodynamic and compressive inertial loads. About 95% of the team’s structural components are made in-house, including the team’s mass-optimized thrust structure, carbon fiber body tubes, and carbon fiber sandwich panel fins.</p>
-    <br>
-    <Picture src={carbonFiber} alt="Carbon Fiber" />
-  </div>
+  <section class="container mx-auto px-32 py-8 text-center">
+    <h1 class="text-6xl font-bold mb-8">Aerostructures</h1>
+    <div class="flex flex-col md:flex-row items-start mb-8">
+      <div class="md:w-4/12 p-4">
+        <Image src={daniel} alt="Daniel" class="w-full h-auto mb-4" />
+        <p class="text-lg text-left">
+          <span class="font-extrabold">Team Lead:</span> Daniel Young<br
+          />Junior in Aerospace Engineering
+        </p>
+      </div>
+      <div class="md:w-4/5 p-4">
+        <p class="text-lg text-left">
+          The Aerostructures subteam is responsible for manufacturing the rocket
+          body, which includes components such as body tubes, fins, and
+          centering rings. We primarily use carbon fiber and fiberglass to
+          achieve our objectives. Our goal is to produce a lightweight,
+          flight-ready rocket that integrates seamlessly with all subsystems.
+          Additionally, we aim to enhance both simulated and physical laboratory
+          testing of rocket parts to improve our understanding of material
+          strength.
+        </p>
+      </div>
+    </div>
+    <div class="masonry">
+      <div class="masonry-item">
+        <Image
+          src={Tube}
+          alt="Carbon Fiber Body Tube Built In-House"
+          class="w-1/2 h-auto"
+        />
+        <p class="mt-2 text-left">Carbon Fiber Body Tube Built In-House</p>
+      </div>
+      <!-- <div class="masonry-item">
+        <Image src={rocket3} alt="Rocket 3" class="w-full h-auto" />
+        <p class="mt-2 text-left">Rocket 3</p>
+      </div>
+      <div class="masonry-item">
+        <Image
+          src={solidBoosterContingency}
+          alt="Solid Booster Contingency"
+          class="w-full h-auto"
+        />
+        <p class="mt-2 text-left">Solid Booster Contingency</p>
+      </div> -->
+      <div class="masonry-item">
+        <Image
+          src={ThrustStructurePic}
+          alt="Original 2023-2024 Thrust Structure Full Assembly"
+          class="w-1/2 h-auto"
+        />
+        <p class="mt-2 text-left">Original 2023-2024 Thrust Structure Full Assembly</p>
+      </div>
+      <!-- <div class="masonry-item">
+        <Image
+          src={carbonFiber}
+          alt="Carbon Fiber Bending"
+          class="w-full h-auto"
+        />
+        <p class="mt-2 text-left">Carbon Fiber Bending</p>
+      </div> -->
+      <div class="masonry-item">
+        <Image src={fins} alt="Set of Carbon Fiber Fins After Post-Processing" class="w-full h-auto" />
+        <p class="mt-2 text-left">Set of Carbon Fiber Fins After Post-Processing</p>
+      </div>
+      <div class="masonry-item">
+        <Image src={MeandRocket} alt="Daniel and the Full 2023-2024 Rocket" class="w-full h-auto" />
+        <p class="mt-2 text-left">Daniel and the Full 2023-2024 Rocket</p>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

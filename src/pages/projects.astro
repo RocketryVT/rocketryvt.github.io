@@ -1,0 +1,27 @@
+---
+import ProjectLayout from "../components/ProjectLayout.astro";
+import untitled3 from "../assets/images/Projects/Untitled_3.jpg";
+
+const projectData = {
+  name: "Spaceport America Cup Project",
+  year: "2021-2022",
+  image: untitled3,
+  image_alt: "Rocket Image",
+  text: {
+    Parachutes:
+      "Our team uses the standard dual deployment method for high powered rockets. Drogue deploys at apogee while main deploys at a preprogrammed altitude, usually 800 ft.",
+    Payload:
+      "The payload within the rocket is a student developed experiment or technology demonstration. The contents of the payload are generally confined to a 3U CubeSat form factor to allow for consistent integration into the rocket. Currently, we are working on a weather sensing suit with a student designed battery packet",
+    Avionics:
+      "Various avionics systems are placed throughout the rocket, mainly inside the electronics bay. Sensors including altimeters, temperature sensors, IMUs, and more provide useful flight data to the team. Also, the data collected by those sensors assist the ADS and the Communication and Telemetry system.",
+    "Active Drag System":
+      "The Active Drag System (ADS) was implemented by Rocketry at Virginia Tech to ensure the rocket's apogee is as close to the target as possible.  It calculates the expected apogee of the rocket in real-time and actuates fins to increase the drag of the rocket accordingly.",
+    "Hybrid Motor":
+      "The hybrid motor uses a bi-propellant mixture of solid fuel and liquid nitrous oxide to produce thrust with a higher efficiency than is achievable using solid fuel alone. This motor has been under development for years, and we intend to fly it in Spaceport 2024!",
+    "Motor Controller":
+      "The motor controller is our own home-grown software stack which operates all the different components of the hybrid motor. This includes pressure transducers, thermocouples, solenoids, DC motors, linear actuators, and a whole host of other equipment which makes the hybrid motor function. The controller is receptive to commands at a distance, transmitted via TCP/IP over our own launch control system. The program facilitates reliable and safe control over the vehicle's motor.",
+  },
+};
+---
+
+<ProjectLayout {...projectData} />

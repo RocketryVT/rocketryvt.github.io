@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { Picture, Image } from 'astro:assets'
+
+const galleryCollection = await getCollection('gallery');
+---
+<BaseLayout>
+<div class="text-center my-16 mb-32">
+    <!-- <h1 class="text-4xl font-bold mb-8">Gallery</h1> -->
+    <!-- <p class="text-lg mb-16">Explore our collection of images from various events and launches.</p> -->
+
+    <div class="mx-auto container my-8 sm:columns-2 md:columns-3 lg:columns-3 xl:columns-3">
+    {galleryCollection.map((item) => (
+        <div class="gallery-item relative mb-4 group">
+        <Image
+            src={item.data.url}
+            alt={item.data.alt || 'Gallery image'}
+            format="avif"
+            quality={50}
+            class="rounded border border-transparent hover:border-gray-300 transition-all duration-300 ease-in-out hover:shadow-lg"
+            loading="lazy"
+        />
+        <div class="alt-text absolute bottom-0 left-0 w-full bg-black bg-opacity-70 text-white p-2 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            {item.data.alt}
+        </div>
+        </div>
+    ))}
+    </div>
+</div>
+</BaseLayout>

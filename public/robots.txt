@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://
+Sitemap: https://rocketryvt.github.io/sitemap-index.xml

@@ -1,22 +1,17 @@
 ---
-import logo from '../assets/logo/rocketry_logo_no_text.png';
-import { Picture } from "astro:assets";
-
 const currentPath = Astro.url.pathname;
+const { headerStyles } = Astro.props;
 ---
 <style>
   .navmenu {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     flex-wrap: wrap;
     align-items: center;
-    padding: 1rem;
-    background-color: black;
-    color: white;
+    background-color: var(--header-background-color);
+    color: var(--header-text-color);
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
     font-style: normal;
-    line-height: 16px;
     letter-spacing: normal;
     text-transform: none;
     font-weight: lighter;
@@ -27,38 +22,26 @@ const currentPath = Astro.url.pathname;
     top: 0;
     left: 0;
     right: 0;
-    width: 100%;
-    padding-bottom: 10px;
     z-index: 1000;
-    align-self: flex-start;
+    transition: background-color 0.3s ease;
   }
 
   .navmenu.dark {
-    background-color: black;
-    color: white;
-  }
-
-  .navmenu.light {
-    background-color: white;
-    color: black;
+    background-color: var(--header-background-color);
+    color: var(--header-text-color);
   }
 
   .navbar {
     display: flex;
     gap: 1rem;
     margin-right: 25px;
-    color: white;
-  }
-
-  .navbar.light {
-    /* light theme styles */
-    background-color: white;
-    color: black;
+    padding: 15px 20px;
+    border-radius: 5px;
   }
   .navbar.dark {
     /* dark theme styles */
-    background-color: white;
-    color: black;
+    background-color: var(--header-background-color);
+    color: var(--header-text-color);
   }
 
   .navbar a {
@@ -66,7 +49,6 @@ const currentPath = Astro.url.pathname;
     text-decoration: none;
     padding: 10px, 15px;
     margin: 0 20px;
-    padding-bottom: 10px;
     line-height: 30px;
   }
 
@@ -90,8 +72,8 @@ const currentPath = Astro.url.pathname;
     min-width: 250px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1001;
-    color: white;
-    background-color: black;
+    background-color: var(--header-background-color);
+    color: var(--header-text-color);
   }
 
   .dropdown-content a {
@@ -109,47 +91,96 @@ const currentPath = Astro.url.pathname;
   }
 
   .dropdown-content.dark {
-    background-color: black;
-    color: white;
+    background-color: var(--header-background-color);
+    color: var(--header-text-color);
   }
 
-  .dropdown-content.light {
-    background-color: white;
-    color: black;
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-right: 25px;
   }
 
-  .logo {
-    align-self: center;
-    width: 100px;
-    padding-bottom: 10px;
-    margin-left: 25px;
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--header-text-color);
+    margin: 4px 0;
+    transition: 0.4s;
+  }
+
+  /* Media query for smaller screens */
+  @media (max-width: 840px) {
+    .navmenu {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .navbar {
+      flex-direction: column;
+      gap: 0;
+      margin-right: 0;
+      padding: 10px 0;
+      display: none; /* Hide the navbar by default on small screens */
+    }
+
+    .navbar.show {
+      display: flex; /* Show the navbar when the hamburger is clicked */
+    }
+
+    .navbar a {
+      margin: 10px 0;
+      padding: 10px 20px;
+    }
+
+    .hamburger {
+      display: flex; /* Show the hamburger menu on small screens */
+    }
   }
 </style>
 
-<div class="navmenu" >
-  <div class="logo">
-    <a href="/"><Picture class="logo" src={logo} alt="Rocketry at Virginia Tech" decoding={"async"} fetchpriority={"high"} loading={"eager"}/></a>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navbar = document.querySelector('.navbar');
+
+    if (hamburger === null || navbar === null) {
+      return;
+    }
+    hamburger.addEventListener('click', () => {
+      navbar.classList.toggle('show');
+    });
+  });
+</script>
+
+<div class="navmenu" style={headerStyles}>
+  <div class="hamburger">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
   <div class="navbar">
     <a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a>
-    <a href="/about-us/" class={currentPath === '/about-us/' ? 'active' : ''} class="light">About Us</a>
+    <a href="/about-us/" class={currentPath === '/about-us/' ? 'active' : ''}>About Us</a>
     <div class="dropdown">
       <a href="/Projects/" class={currentPath.startsWith('/Projects') ? 'active' : ''}>Projects</a>
       <div class="dropdown-content">
-        <a href="/2022-2023" class={currentPath === '/2022-2023' ? 'active' : ''}>2022 - 2023</a>
-        <a href="/2021-2022" class={currentPath === '/2021-2022' ? 'active' : ''}>2021 - 2022</a>
-        <a href="/2020-2021" class={currentPath === '/2020-2021' ? 'active' : ''}>2020 - 2021</a>
-        <a href="/2019-2020" class={currentPath === '/2019-2020' ? 'active' : ''}>2019 - 2020</a>
-        <a href="/2018-2019" class={currentPath === '/2018-2019' ? 'active' : ''}>2018 - 2019</a>
-        <a href="/2017-2018" class={currentPath === '/2017-2018' ? 'active' : ''}>2017 - 2018</a>
-        <a href="/2016-2017" class={currentPath === '/2016-2017' ? 'active' : ''}>2016 - 2017</a>
-        <a href="/2015-2016" class={currentPath === '/2015-2016' ? 'active' : ''}>2015 - 2016</a>
+        <a href="/Projects/2023-2024" class={currentPath.includes("2023-2024") ? 'active' : ''}>2023 - 2024</a>
+        <a href="/Projects/2022-2023" class={currentPath.includes("2022-2023") ? 'active' : ''}>2022 - 2023</a>
+        <a href="/Projects/2021-2022" class={currentPath.includes("2021-2022") ? 'active' : ''}>2021 - 2022</a>
+        <a href="/Projects/2020-2021" class={currentPath.includes("2020-2021") ? 'active' : ''}>2020 - 2021</a>
+        <a href="/Projects/2019-2020" class={currentPath.includes("2019-2020") ? 'active' : ''}>2019 - 2020</a>
+        <a href="/Projects/2018-2019" class={currentPath.includes("2018-2019") ? 'active' : ''}>2018 - 2019</a>
+        <a href="/Projects/2017-2018" class={currentPath.includes("2017-2018") ? 'active' : ''}>2017 - 2018</a>
+        <a href="/Projects/2016-2017" class={currentPath.includes("2016-2017") ? 'active' : ''}>2016 - 2017</a>
+        <a href="/Projects/2015-2016" class={currentPath.includes("2015-2016") ? 'active' : ''}>2015 - 2016</a>
       </div>
     </div>
     <div class="dropdown">
-      <a href="/Team" class={currentPath.startsWith('/Team') ? 'active' : ''}>Team</a>
+      <a href="/Team/Board" class={currentPath.startsWith('/Team') ? 'active' : ''}>Team</a>
       <div class="dropdown-content">
-        <a href="/Board" class={currentPath === '/Board' ? 'active' : ''}>Board of Directors</a>
+        <a href="/Team/Board" class={currentPath === '/Team/Board' ? 'active' : ''}>Board of Directors</a>
         <a href="/Team/Aerostructures" class={currentPath === '/Team/Aerostructures' ? 'active' : ''}>Aerostructures</a>
         <a href="/Team/Avionics" class={currentPath === '/Team/Avionics' ? 'active' : ''}>Avionics</a>
         <a href="/Team/Subsystems" class={currentPath === '/Team/Subsystems' ? 'active' : ''}>Subsystems</a>

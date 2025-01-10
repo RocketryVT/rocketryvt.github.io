@@ -1,6 +1,4 @@
 ---
-import Picture from 'astro/components/Picture.astro';
-
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Instagram from '../components/Instagram.astro';
 import HeroSection from '../components/HeroSection.astro';
@@ -8,11 +6,12 @@ import HeroSection from '../components/HeroSection.astro';
 import experience from '../assets/images/experience.jpg';
 import SAC2018 from '../assets/images/SAC2018.jpg';
 import community from '../assets/images/DSC00049.jpg';
+import promo_video from '../assets/videos/Spaceport_America_Cup_2018.mp4';
 ---
-<BaseLayout>
+<BaseLayout headerColor="dark">
 	<style>
     .background-video {
-      position: fixed;
+      position: absolute;
       top: 0;
       left: 0;
       width: 100%;
@@ -29,7 +28,10 @@ import community from '../assets/images/DSC00049.jpg';
       height: 100vh;
       color: white;
       text-align: center;
-      background-color: black;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: relative;
+      overflow: hidden;
+      margin-top: -80px;
     }
 
     .main-title {
@@ -125,19 +127,20 @@ import community from '../assets/images/DSC00049.jpg';
     
 </style>
 <div class="content-wrapper">
-    <video class="background-video" autoplay loop muted>
-      <source src="/path/to/your/video.mp4" type="video/mp4">
+    <video class="background-video" autoplay="true" loop="true" muted="true">
+      <source src={promo_video} type="video/mp4">
       Your browser does not support the video tag.
     </video>
     <h1 class="main-title">ROCKETRY AT VIRGINIA TECH</h1>
     <h4 class="subtitle">Pushing the limits of high-powered rocketry.</h4>
-  </div>
+</div>
 
 <HeroSection 
   title="HANDS-ON ENGINEERING EXPERIENCE" 
   description="Giving Virginia Tech students the aerospace and engineering opportunities that are only possible in a lab." 
   image={experience}
-  link="/team"
+  image_description="A Group shot of the Rocketry at Virginia Tech team holding the teams rocket"
+  link="/Team"
   flip={false} 
 />
 
@@ -145,7 +148,8 @@ import community from '../assets/images/DSC00049.jpg';
   title="FROM BLACKSBURG TO NEW MEXICO" 
   description="Rocketry at Virginia Tech competes in the Spaceport America Cup competition where we fly rockets to a target altitude and compete with teams from all around the world."
   image={SAC2018}
-  link="/projects"
+  image_description="Several Members of the Rocketry at Virginia Tech team standing in front of the teams rocket at the Spaceport America Cup loading onto the launch rail"
+  link="/Projects"
   flip={true}
 />
 
@@ -153,7 +157,8 @@ import community from '../assets/images/DSC00049.jpg';
   title="GIVING BACK TO THE COMMUNITY" 
   description="Working with the university and local organizations to educate children and the community about high-powered rocketry and encourage interest in STEAM." 
   image={community}
-  link="/outreach"
+  image_description="A group of children and Rocketry at Virginia Tech members looking and touching parts of the rocket at a booth"
+  link="/Outreach"
   flip={false}
 />
 

@@ -1,0 +1,23 @@
+---
+import ProjectLayout from '../../components/ProjectLayout.astro';
+import spectr from "../../assets/images/Projects/SPECTR.png";
+
+const projectData = {
+  name: "SPECTR",
+  year: "2016-2017",
+  subtitle: "THE FIRST IREC ROCKET",
+  image: spectr,
+  image_alt: "SPECTR Rocket",
+  text: {
+    '': "Spectral Plasma Experiment aboard Composite Transonic Rocket (SPECTR) was the first rocket that was designed by Rocketry at Virginia Tech to compete in the Intercollegiate Rocket Engineering Competition (IREC). The rocket featured the team’s first carbon fiber composite airframe and initial iteration of the Active Drag System (ADS). SPECTR was entered in the 10,000 ft. Commercial Off the Shelf (COTS) category with a predicted apogee of 10,349 ft.",
+  },
+  overview: {
+    height: "124.00 in.",
+    diameter: "6.23 in.",
+    lift_off_mass: "52.2 lbs.",
+    motor: "AEROTECH M1850W"
+  }
+};
+---
+
+<ProjectLayout {...projectData} />

@@ -1,6 +1,7 @@
 ---
-import Picture from "astro/components/Picture.astro";
-const { title, description, image, link, flip } = Astro.props;
+import { Picture, Image } from 'astro:assets'
+const { title, description, image, image_description='', link, flip } = Astro.props;
+import Button from "./Button.astro";
 ---
 
 <style>
@@ -10,8 +11,8 @@ const { title, description, image, link, flip } = Astro.props;
     justify-content: space-between;
     align-items: center;
     padding: 2rem;
-    background-color: #f4f4f4;
-    color: black;
+    background-color: var(--background-color);
+    color: var(--text-color);
     font-family: 'Poppins', sans-serif;
   }
 
@@ -56,25 +57,6 @@ const { title, description, image, link, flip } = Astro.props;
     height: auto;
   }
 
-  .learn-more {
-    display: inline-block;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    background-color: transparent;
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 6.4px;
-    border: 2px solid black;
-    text-align: center;
-    transition: background-color 0.3s, color 0.3s;
-  }
-
-  .learn-more:hover {
-    background-color: black;
-    color: white;
-  }
-
   .flipped {
     flex-direction: row-reverse;
   }
@@ -89,9 +71,10 @@ const { title, description, image, link, flip } = Astro.props;
     <div class="section-description">
       <p>{description}</p>
     </div>
-    <a href={link} class="learn-more">LEARN MORE</a>
+    <!-- <a href={link} class="learn-more">LEARN MORE</a> -->
+    <Button url={link} text="LEARN MORE" />
   </div>
   <div class="section-image">
-    <Picture src={image} alt="Section Image">
+    <Image src={image} alt={image_description} />
   </div>
 </div>

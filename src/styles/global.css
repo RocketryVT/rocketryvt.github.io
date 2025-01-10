@@ -5,6 +5,23 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background-color: white;
+  --text-color: black;
+  --link-color: blue;
+  --header-background-color: white;
+  --header-text-color: black;
+  scrollbar-width: thin;
+}
+
+:root.dark {
+  --background-color: black;
+  --text-color: white;
+  --link-color: blue;;
+  --header-background-color: black;
+  --header-text-color: white;
+}
+
 html {
     background-color: #f1f5f9;
     font-family: 'Poppins', sans-serif;
@@ -54,10 +71,10 @@ html {
   }
   
   html.dark {
-    background-color: #0d0950;
-    color: #fff;
+    background-color: black;
+    color: white;
   }
   
   .dark .nav-links a {
-    color: #fff;
+    color: white;
   }
