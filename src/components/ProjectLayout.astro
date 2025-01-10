@@ -1,0 +1,64 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Image from "astro/components/Image.astro";
+
+const { name, year, subtitle, image, image_alt, text, overview } = Astro.props;
+---
+
+<BaseLayout>
+  <div class="container mx-auto px-4 py-8">
+    {name ? (
+      <>
+        <h1 class="text-6xl font-bold mb-4 text-center">{name}</h1>
+        <h2 class="text-2xl mb-8 text-center">{year}</h2>
+
+        {subtitle && (
+          <h3 class="text-xl mb-8 text-center">{subtitle}</h3>
+        )}
+        
+        {image && (
+          <div class={`px-4 md:px-40 ${!text || Object.keys(text).length === 0 ? 'flex justify-center' : ''}`}>
+            <div class="flex justify-center">
+              <Image src={image} alt={image_alt} class="w-auto max-h-[60vh] mb-8" />
+            </div>
+          </div>
+        )}
+
+        {text && Object.keys(text).length > 0 && (
+          <div class={`grid ${Object.keys(text).length === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-8 px-4 md:px-40`}>
+            {Object.entries(text).map(([header, body], index) => (
+              <>
+                <div id={`section-${index}`}>
+                  <h3 class="text-xl font-bold mb-2 text-center">{header}</h3>
+                  <p>{body}</p>
+                </div>
+                {index % 2 === 1 && index < Object.entries(text).length - 1 && (
+                  <div class="col-span-2">
+                    <hr class="my-4" />
+                  </div>
+                )}
+              </>
+            ))}
+          </div>
+        )}
+
+        {overview && (
+          <div class="mt-8 px-4 md:px-40">
+            <h3 class="text-2xl font-extrabold mb-4">OVERVIEW</h3>
+            <hr class="mb-4" />
+            <div class="grid grid-cols-2 gap-y-2 max-w-md">
+              {Object.entries(overview).map(([key, value]) => (
+                <>
+                  <div class="font-semibold capitalize">{key.replace(/_/g, ' ')}:</div>
+                  <div>{value}</div>
+                </>
+              ))}
+            </div>
+          </div>
+        )}
+      </>
+    ) : (
+      <p>Error: Project data is missing or incomplete.</p>
+    )}
+  </div>
+</BaseLayout>

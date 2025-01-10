@@ -1,0 +1,81 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Image from "astro/components/Image.astro";
+
+import ads_flaps from "../../assets/images/Avionics/ads_flaps.gif";
+import flaps_ground from "../../assets/images/Avionics/flaps-ground.gif";
+import me_boys from "../../assets/images/Avionics/me_boys.jpeg";
+import me_rocket from "../../assets/images/Avionics/me_rocket.jpg";
+import old_ads_pcb from "../../assets/images/Avionics/old-ads-pcb.png";
+---
+
+<style>
+  .masonry {
+    column-count: 2;
+    column-gap: 1rem;
+  }
+  .masonry-item {
+    break-inside: avoid;
+    margin-bottom: 1rem;
+  }
+</style>
+
+<BaseLayout>
+<section class="container mx-auto px-32 py-8 text-center">
+  <h1 class="text-6xl font-bold mb-8">Avionics</h1>
+  <div class="flex flex-col md:flex-row items-start mb-8">
+    <div class="md:w-4/12 p-4">
+      <Image
+        src={me_rocket}
+        alt="Dawsyn Schraiber"
+        class="w-full h-auto mb-4"
+      />
+      <p class="text-lg text-left">
+        <span class="font-bold">Team Lead:</span> Dawsyn Schraiber<br />Senior
+        in Computer Engineering
+      </p>
+    </div>
+    <div class="md:w-4/5 p-4">
+      <p class="text-lg text-left">
+        The Avionics subteam’s responsibilities encompass the rocket’s overall
+        electronic and software design/implementation. This includes, but is not
+        limited to, the Active Drag System’s PCB and algorithm, the Payload PCB
+        and telemetry project, and the Recovery Bay wiring and battery
+        selection.
+      </p>
+      <p class="text-lg text-left mt-4">
+        The goal for Avionics this year is to develop a more cohesive and
+        quality electronics stack with common design principles for the
+        2024-2025 competition year. Gone are the days using the Beaglebone as a
+        primary flight computer and in its place custom RP2040-based PCBs with
+        proper power management and reusable, modular software components. Know
+        that while this is a “move fast and break things” type of design team,
+        it will be critical to consider how to verify and validate these custom
+        projects from the ground before they are ever placed in a rocket.
+      </p>
+    </div>
+  </div>
+  <div class="masonry">
+    <div class="masonry-item">
+      <Image src={flaps_ground} alt="Flaps Ground Test" class="w-1/2 h-auto" />
+      <p class="mt-2 text-left">Flaps Ground Test</p>
+    </div>
+    <div class="masonry-item">
+      <Image src={me_boys} alt="Me and Rocket" class="w-full h-auto" />
+      <p class="mt-2 text-left">Spaceport 2024 Avionics</p>
+    </div>
+    <div class="masonry-item">
+      <Image
+        src={ads_flaps}
+        alt="Active Drag System Flaps"
+        class="w-full h-auto"
+      />
+      <p class="mt-2 text-left">Active Drag System Flaps</p>
+    </div>
+    <div class="masonry-item">
+      <Image src={old_ads_pcb} alt="Old ADS PCB" class="w-full h-auto" />
+      <p class="mt-2 text-left">Old ADS PCB</p>
+    </div>
+  </div>
+</section>
+</BaseLayout>

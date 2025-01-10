@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Picture, Image } from 'astro:assets';
+
+import Ben from '../../assets/images/Board/Ben.jpg';
+import Daniel from '../../assets/images/Board/Daniel_Crop.jpg';
+import Dawsyn from '../../assets/images/Board/Dawsyn_Crop.jpeg';
+import Vanessa from '../../assets/images/Board/vanessa.png';
+---
+
+<style>
+    .board-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+  
+    .board {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* Ensure there are always 4 columns */
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px; /* Optional: Set a max-width to limit the width of the grid */
+    }
+  
+    .board-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .board-member img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover; /* Crop the images to fit the container */
+      border-radius: 5px;
+    }
+  
+    .board-member h2 {
+      margin-top: 1rem;
+      font-size: 1.5rem; /* Make the names bigger */
+      font-weight: 600; /* Adjust the font weight as needed */
+    }
+  
+    .board-member p {
+      margin-top: 0.5rem;
+      font-size: 1rem; /* Make the titles smaller */
+      font-weight: 300; /* Make the titles have a thinner stroke */
+    }
+
+    @media (max-width: 768px) {
+        .board {
+            grid-template-columns: 1fr; /* Switch to a single column layout on smaller screens */
+        }
+    }
+  </style>
+
+<BaseLayout>
+    <div class="board-container">
+      <h1>Board of Directors</h1>
+      <div class="board">
+        <div class="board-member">
+            <Image src={Daniel} alt="Daniel Young" loading="eager"/>
+          <h2>Daniel Young</h2>
+          <p>Aerostructures Lead</p>
+        </div>
+  
+        <div class="board-member">
+          <Image src={Dawsyn} alt="Dawsyn Schraiber" loading="eager" />
+          <h2>Dawsyn Schraiber</h2>
+          <p>Avionics Lead</p>
+        </div>
+  
+        <div class="board-member">
+          <Image src={Ben} alt="Ben Anderson" loading="eager"/>
+          <h2>Ben Anderson</h2>
+          <p>Subsystems Lead</p>
+        </div>
+  
+        <div class="board-member">
+          <Image src={Vanessa} alt="Vanessa Bushell" loading="eager"/>
+          <h2>Vanessa Bushell</h2>
+          <p>Treasurer</p>
+        </div>
+      </div>
+    </div>
+  </BaseLayout>

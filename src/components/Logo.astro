@@ -1,0 +1,21 @@
+---
+import logo from '../assets/logo/rocketry_logo_no_text.png';
+import { Picture, Image } from "astro:assets";
+---
+
+<div class="logo">
+  <a href="/"><Image class="logo" src={logo} alt="Rocketry at Virginia Tech" decoding={"async"} fetchpriority={"high"} loading={"eager"}/></a>
+</div>
+
+<style>
+  .logo {
+    align-self: center;
+    width: 107px;
+    margin-left: 20px;
+    margin-top: -5px;
+  }
+  .logo img {
+    width: 100%;
+    height: auto;
+  }
+</style>

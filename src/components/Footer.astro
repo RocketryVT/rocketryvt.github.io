@@ -1,0 +1,59 @@
+---
+import { Image } from 'astro:assets';
+import facebook from '../assets/socials/facebook/2023_Facebook_icon.svg';
+import instagram from '../assets/socials/instagram/01 Gradient Glyph/instagram.png';
+import linkedin from '../assets/socials/linkedin/linkedin.svg';
+---
+<style>
+    footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+    .icon-grid {
+      display: flex;
+      gap: 1rem;
+    }
+    .icon-grid img {
+      width: 40px;
+      height: 40px;
+    }
+    h5 {
+      margin-top: 1rem;
+    }
+  </style>
+  
+  <footer>
+    <div class="icon-grid">
+      <a href="https://www.facebook.com/RocketryatVT/" target="_blank" rel="noopener noreferrer">
+        <Image src={facebook} alt="Facebook" loading="eager"/>
+      </a>
+      <a href="https://www.instagram.com/rocketryatvirginiatech/" target="_blank" rel="noopener noreferrer">
+        <Image src={instagram} alt="Instagram" loading="eager"/>
+      </a>
+      <a href="https://www.linkedin.com/company/rocketry-at-virginia-tech/" target="_blank" rel="noopener noreferrer">
+        <Image src={linkedin} alt="LinkedIn" loading="eager"/>
+      </a>
+    </div>
+    <h5>Rocketry at Virginia Tech</h5>
+  </footer>
+
+<!-- ---
+import Social from "./Social.astro";
+---
+
+<style>
+   footer {
+       display: flex;
+       gap: 0.5rem;
+       margin-top: 2rem;
+   }
+</style>
+
+<footer>
+    <Social platform="twitter" username="astrodotbuild" />
+    <Social platform="github" username="withastro" />
+    <Social platform="youtube" username="astrodotbuild" />
+</footer> -->

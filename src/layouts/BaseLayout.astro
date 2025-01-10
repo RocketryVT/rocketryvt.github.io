@@ -1,0 +1,45 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+const { 
+  pageTitle = "Rocketry at Virginia Tech",
+  headerColor = "light",
+  description = "Rocketry at Virginia Tech is a student organization that competes in the Spaceport America Cup competition.",
+  keywords = "rocketry, aerospace, engineering, spaceport america cup, virginia tech",
+} = Astro.props;
+import favicon from "../assets/logo/favicon.ico";
+import favicon16 from "../assets/logo/favicon-16x16.png";
+import favicon32 from "../assets/logo/favicon-32x32.png";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href={favicon} />
+    <link rel="icon" type="image/png" sizes="16x16" href={favicon16.src} />
+    <link rel="icon" type="image/png" sizes="32x32" href={favicon32.src} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={favicon32.src} />
+    <meta property="og:url" content={Astro.url} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={favicon32.src} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Header headerColor={headerColor} />
+    <slot />
+    <Footer />
+    <script>
+      import "../scripts/menu.js";
+    </script>
+  </body>
+</html>
