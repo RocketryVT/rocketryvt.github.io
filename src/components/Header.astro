@@ -1,8 +1,5 @@
 ---
-import Hamburger from "./Hamburger.astro";
 import Navigation from "./Navigation.astro";
-import Logo from "./Logo.astro";
-import ThemeIcon from "./ThemeIcon.astro";
 const { headerColor } = Astro.props;
 const isDarkMode = headerColor === "dark";
 const headerStyles = isDarkMode
@@ -17,12 +14,7 @@ const headerStyles = isDarkMode
 ---
 
 <header style={headerStyles}>
-  <nav>
-    <Logo />
-    <!-- <Hamburger /> -->
-    <!-- <ThemeIcon /> -->
-    <Navigation {headerStyles}/>
-  </nav>
+  <Navigation {headerStyles}/>
 </header>
 
 <style>
@@ -37,11 +29,11 @@ const headerStyles = isDarkMode
     align-items: center;
     transition: background-color 0.3s ease, color 0.3s ease;
   }
-  nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    width: 100%;
+  @media (max-width: 840px) {
+    .logo-hamburger {
+      flex-direction: column;
+      align-items: flex-start;
+      width: 100%;
+    }
   }
 </style>

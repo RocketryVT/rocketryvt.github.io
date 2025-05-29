@@ -4,14 +4,16 @@ import Image from "astro/components/Image.astro";
 
 import Button from "../components/Button.astro";
 
-import Aerojet from "../assets/images/Sponsors/Aerojet.png";
-import AOE_LogoWhite from "../assets/images/Sponsors/AOE_LogoWhite.png";
-import BlueOriginNoBG from "../assets/images/Sponsors/BlueOriginNoBG.png";
 import ErinwithFlag from "../assets/images/Sponsors/ErinwithFlag.jpg";
-import LockheedWhite from "../assets/images/Sponsors/LockheedWhite.png";
+
+// Import sponsor logos
+import AOE_LogoWhite from "../assets/images/Sponsors/KevinT.CroftonDepartmentofAerospaceandOceanEngineering_horizontal_RGB copy.png";
 import SEC_LogoWhite from "../assets/images/Sponsors/SEC_LogoWhite.png";
 import VSGC_LogoWhite from "../assets/images/Sponsors/VSGC_LogoWhite.png";
-import WhiteProtospace from "../assets/images/Sponsors/WhiteProtospace.png";
+import Northrop from "../assets/images/Sponsors/northrop-white.svg";
+import LockheedWhite from "../assets/images/Sponsors/LockheedWhite.png";
+import Boeing from "../assets/images/Sponsors/boeing-logo.png";
+import L3Harris from "../assets/images/Sponsors/l3harris.png";
 ---
 
 <style>
@@ -95,7 +97,7 @@ import WhiteProtospace from "../assets/images/Sponsors/WhiteProtospace.png";
       id="sponsors-section"
       class="scroll-mt-20 bg-maroon-500 text-white py-4 text-center"
     >
-      <h2 class="text-2xl font-bold mt-8">THANK YOU TO OUR 2023-24 SPONSORS!</h2>
+      <h2 class="text-2xl font-bold mt-8">THANK YOU TO OUR 2024-25 SPONSORS!</h2>
     </div>
     <!-- <hr class="border-t-2 border-white my-4" /> -->
 
@@ -104,11 +106,6 @@ import WhiteProtospace from "../assets/images/Sponsors/WhiteProtospace.png";
           <Image
             src={AOE_LogoWhite}
             alt="AOE Logo White"
-            class="w-full h-50 object-contain"
-          />
-          <Image
-            src={Aerojet}
-            alt="Aerojet"
             class="w-full h-auto object-contain"
           />
           <Image
@@ -122,18 +119,23 @@ import WhiteProtospace from "../assets/images/Sponsors/WhiteProtospace.png";
             class="w-full h-40 object-contain"
           />
           <Image
+            src={Northrop}
+            alt="Northrop Grumman Symbol"
+            class="w-full h-auto object-contain"
+          />
+          <Image
             src={LockheedWhite}
             alt="Lockheed White"
             class="w-full h-auto object-contain"
           />
           <Image
-            src={WhiteProtospace}
-            alt="White Protospace"
-            class="w-full h-40 object-contain"
+            src={Boeing}
+            alt="Boeing Logo"
+            class="w-full h-auto object-contain"
           />
           <Image
-            src={BlueOriginNoBG}
-            alt="Blue Origin"
+            src={L3Harris}
+            alt="L3 Harris Logo"
             class="w-full h-auto object-contain"
           />
       </div>

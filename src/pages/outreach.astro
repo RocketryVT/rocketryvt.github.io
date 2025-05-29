@@ -1,0 +1,47 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout>
+<style>
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .text-cell {
+    flex: 1;
+    padding: 70px;
+  }
+  .header {
+    font-size: 44.8px;
+    font-style: normal;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    line-height: 58.2px;
+    color: rgb(134, 31, 65);
+  }
+  p {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    line-height: 32px;
+    color: rgb(0, 0, 0);
+  }
+</style>
+
+<div class="flex-container">
+  <div class="text-cell">
+    <div class="header">
+        <h2>Outreach</h2>
+  </div>
+    <br>
+    <p>Rocketry at Virginia Tech is committed to inspiring the next generation of engineers and scientists through outreach initiatives. We engage with local schools and communities to share our passion for rocketry, science, and engineering, fostering interest in STEM fields.</p>
+    <br>
+    <p>Our outreach programs include hands-on with our projects, presentations, and demonstrations that allow students to explore the exciting world of rocketry. By providing opportunities for students to learn about engineering principles and teamwork, we aim to ignite curiosity and encourage future careers in STEM.</p>
+    <br>
+    <p>We believe that by sharing our knowledge and enthusiasm, we can help shape the future of engineering and inspire the next generation of innovators.</p>
+</div>
+</BaseLayout>

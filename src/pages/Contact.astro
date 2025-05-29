@@ -97,6 +97,18 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   .text-maroon {
     color: rgb(134, 31, 65);
   }
+
+  @media (max-width: 840px) {
+    .flex-container {
+      flex-direction: column-reverse;
+      padding: 0;
+    }
+    .info-cell, .form-cell {
+      padding-left: 0;
+      padding-bottom: 20px;
+      min-width: 0;
+    }
+  }
 </style>
 
 <BaseLayout>

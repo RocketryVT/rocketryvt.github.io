@@ -21,10 +21,37 @@ import carbonFiber from "../../assets/images/Aero/carbon-fiber-bending.gif";
     break-inside: avoid;
     margin-bottom: 1rem;
   }
+@media (max-width: 840px) {
+  .masonry {
+    column-count: 1;
+  }
+  .container,
+  section.container {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  .text-lg {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .py-8 {
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+  .px-32 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  h1.text-6xl {
+    font-size: 2.2rem;
+    line-height: 1.1;
+    word-break: break-word;
+  }
+}
 </style>
 
 <BaseLayout>
-  <section class="container mx-auto px-32 py-8 text-center">
+  <section class="container mx-auto px-4 md:px-32 py-8 text-center">
     <h1 class="text-6xl font-bold mb-8">Aerostructures</h1>
     <div class="flex flex-col md:flex-row items-start mb-8">
       <div class="md:w-4/12 p-4">

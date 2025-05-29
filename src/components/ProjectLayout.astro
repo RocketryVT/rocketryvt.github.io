@@ -24,16 +24,17 @@ const { name, year, subtitle, image, image_alt, text, overview } = Astro.props;
           </div>
         )}
 
-        {text && Object.keys(text).length > 0 && (
+        { text && Object.keys(text).length > 0 && (
           <div class={`grid ${Object.keys(text).length === 1 ? 'grid-cols-1' : 'grid-cols-1 md:grid-cols-2'} gap-8 px-4 md:px-40`}>
-            {Object.entries(text).map(([header, body], index) => (
+            {Object.entries(text).map(([header, body], index, arr) => (
               <>
-                <div id={`section-${index}`}>
+                <div class="break-words" style="min-width:0;">
                   <h3 class="text-xl font-bold mb-2 text-center">{header}</h3>
                   <p>{body}</p>
                 </div>
-                {index % 2 === 1 && index < Object.entries(text).length - 1 && (
-                  <div class="col-span-2">
+                {/* Insert <hr> after every item in 1-col mode, after every row in 2-col mode */}
+                {(index % 2 === 1 || (index === arr.length - 1 && arr.length % 2 === 1)) && (
+                  <div class="col-span-full">
                     <hr class="my-4" />
                   </div>
                 )}

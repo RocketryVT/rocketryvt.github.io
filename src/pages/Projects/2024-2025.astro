@@ -1,0 +1,23 @@
+---
+import ProjectLayout from '../../components/ProjectLayout.astro';
+// import spectr from "../../assets/images/Projects/SPECTR.png";
+
+const projectData = {
+  name: "ROADKILL",
+  year: "2024-2025",
+//   subtitle: "THE FIRST IREC ROCKET",
+//   image: spectr,
+//   image_alt: "SPECTR Rocket",
+  text: {
+    '': "Complete with Rocketry at Virginia Tech's first custom PCB for the ADS, a LoRa based Mesh communication system complete with external antennas on the carbon fiber booster secion",
+  },
+  overview: {
+    height: "124.00 in.",
+    diameter: "6.23 in.",
+    lift_off_mass: "52.2 lbs.",
+    motor: "AEROTECH TODO"
+  }
+};
+---
+
+<ProjectLayout {...projectData} />

@@ -45,6 +45,15 @@ import Button from '../components/Button.astro';
     line-height: 32px;
     color: rgb(0, 0, 0);
   }
+  @media (max-width: 840px) {
+    .flex-container {
+      flex-direction: column-reverse;
+      padding: 0;
+    }
+    .text-cell, .image-cell {
+      padding: 20px;
+    }
+  }
 </style>
 
 <div class="flex-container">
@@ -53,9 +62,9 @@ import Button from '../components/Button.astro';
       <h2>Our Mission</h2>
     </div>
     <br>
-    <p>Rocketry At Virginia Tech competes in the 10k COTS category of the Spaceport America Cup, where we strive to achieve a 10,000-foot apogee with a commercial off-the-shelf motor. In pursuit of this goal, students gain hands-on technical and teamwork experience.</p>
+    <p>Rocketry At Virginia Tech competes in the 10k COTS category of the International Rocket Engineering Competition (IREC), where we strive to achieve a 10,000-foot apogee with a commercial off-the-shelf motor. In pursuit of this goal, students gain hands-on technical and teamwork experience.</p>
     <br>
-    <Button url="https://spaceportamericacup.com/" text="Learn more about Spaceport" new_tab = true/>
+    <Button url="https://www.soundingrocket.org/2025-irec.html" text="Learn more about IREC" new_tab = true/>
   </div>
   <div class="image-cell">
     <Image src={spaceport_america_2023} alt="Rocketry at Virginia Tech"/>

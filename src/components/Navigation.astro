@@ -1,30 +1,40 @@
 ---
 const currentPath = Astro.url.pathname;
 const { headerStyles } = Astro.props;
+import Logo from "./Logo.astro";
 ---
 <style>
   .navmenu {
     display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: column;
+    width: 100%;
     background-color: var(--header-background-color);
     color: var(--header-text-color);
     font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    letter-spacing: normal;
-    text-transform: none;
-    font-weight: lighter;
-    font-stretch: condensed;
-    text-size-adjust: 100%;
-    unicode-bidi: isolate;
-    position: sticky;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
     transition: background-color 0.3s ease;
   }
+
+  .top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+  }
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .logo-container img {
+    width: 107px;
+    height: auto;
+    margin: 0; /* remove vertical offset */
+    display: block;
+  }
+
 
   .navmenu.dark {
     background-color: var(--header-background-color);
@@ -33,10 +43,10 @@ const { headerStyles } = Astro.props;
 
   .navbar {
     display: flex;
+    justify-content: flex-end;
+    align-items: center;
     gap: 1rem;
-    margin-right: 25px;
-    padding: 15px 20px;
-    border-radius: 5px;
+    padding: 10px 20px;
   }
   .navbar.dark {
     /* dark theme styles */
@@ -99,7 +109,6 @@ const { headerStyles } = Astro.props;
     display: none;
     flex-direction: column;
     cursor: pointer;
-    margin-right: 25px;
   }
 
   .hamburger div {
@@ -107,87 +116,244 @@ const { headerStyles } = Astro.props;
     height: 3px;
     background-color: var(--header-text-color);
     margin: 4px 0;
-    transition: 0.4s;
   }
+  .mobile-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--header-background-color, black);
+    color: var(--header-text-color, white);
+    z-index: 2000;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.3s;
+  }
+
+  .mobile-overlay.show {
+    display: flex;
+  }
+  .mobile-overlay .close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: inherit;
+    background: none;
+    border: none;
+  }
+  .mobile-overlay nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+  .mobile-overlay a {
+    font-size: 2rem;
+    color: inherit;
+    text-decoration: none;
+  }
+  .mobile-overlay a.active {
+    text-decoration: underline;
+  }
+  .mobile-dropdown {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.mobile-dropdown-toggle {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mobile-dropdown-toggle .arrow {
+  margin-left: 0.5rem;
+  font-size: 1.2rem;
+}
+.mobile-dropdown-content {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+.mobile-dropdown-content.show {
+  display: flex;
+}
+.mobile-dropdown-content a {
+  font-size: 1.5rem;
+}
 
   /* Media query for smaller screens */
-  @media (max-width: 840px) {
-    .navmenu {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .navbar {
-      flex-direction: column;
-      gap: 0;
-      margin-right: 0;
-      padding: 10px 0;
-      display: none; /* Hide the navbar by default on small screens */
-    }
-
-    .navbar.show {
-      display: flex; /* Show the navbar when the hamburger is clicked */
-    }
-
-    .navbar a {
-      margin: 10px 0;
-      padding: 10px 20px;
-    }
-
-    .hamburger {
-      display: flex; /* Show the hamburger menu on small screens */
-    }
+@media (max-width: 840px) {
+  .navmenu {
+    flex-direction: column;
+    align-items: flex-start;
   }
+  .navbar {
+    display: none !important;
+  }
+
+  .navbar.show {
+    display: flex;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
+
+  .dropdown.open .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-content {
+    position: static;
+    text-align: right;
+  }
+
+  .navbar a {
+    margin: 10px 0;
+    text-align: right;
+  }
+  .hamburger {
+    display: flex;
+  }
+  .top-row {
+    flex-direction: row;
+    align-items: center;
+  }
+}
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
-    const navbar = document.querySelector('.navbar');
+    const overlay = document.querySelector('.mobile-overlay');
+    const closeBtn = document.querySelector('.mobile-overlay .close-btn');
+    const overlayLinks = document.querySelectorAll('.mobile-overlay a');
+    const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle');
+    const mobileDropdownContent = document.querySelector('.mobile-dropdown-content');
 
-    if (hamburger === null || navbar === null) {
-      return;
+    if (mobileDropdownToggle && mobileDropdownContent) {
+      mobileDropdownToggle.addEventListener('click', () => {
+        mobileDropdownContent.classList.toggle('show');
+        // Optionally toggle arrow direction
+        const arrow = mobileDropdownToggle.querySelector('.arrow');
+        if (arrow) {
+          arrow.textContent = mobileDropdownContent.classList.contains('show') ? '▲' : '▼';
+        }
+      });
     }
-    hamburger.addEventListener('click', () => {
-      navbar.classList.toggle('show');
+
+    if (hamburger && overlay) {
+      hamburger.addEventListener('click', () => {
+        overlay.classList.add('show');
+        document.body.style.overflow = 'hidden';
+      });
+    }
+    if (closeBtn && overlay) {
+      closeBtn.addEventListener('click', () => {
+        overlay.classList.remove('show');
+        document.body.style.overflow = '';
+      });
+    }
+    // Close overlay when a link is clicked
+    overlayLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (overlay) {
+          overlay.classList.remove('show');
+          document.body.style.overflow = '';
+        }
+      });
     });
   });
 </script>
 
 <div class="navmenu" style={headerStyles}>
-  <div class="hamburger">
-    <div></div>
-    <div></div>
-    <div></div>
+  <div class="top-row">
+    <div class="logo-container">
+      <Logo />
+    </div>
+
+    <div class="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+
+    <div class="navbar">
+      <a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a>
+      <a href="/about-us/" class={currentPath === '/about-us/' ? 'active' : ''}>About Us</a>
+      <div class="dropdown">
+        <a href="/Projects/" class={currentPath.startsWith('/Projects') ? 'active' : ''}>Projects</a>
+        <div class="dropdown-content">
+          <a href="/Projects/2024-2025" class={currentPath.includes("2024-2025") ? 'active' : ''}>2024 - 2025</a>
+          <a href="/Projects/2023-2024" class={currentPath.includes("2023-2024") ? 'active' : ''}>2023 - 2024</a>
+          <a href="/Projects/2022-2023" class={currentPath.includes("2022-2023") ? 'active' : ''}>2022 - 2023</a>
+          <a href="/Projects/2021-2022" class={currentPath.includes("2021-2022") ? 'active' : ''}>2021 - 2022</a>
+          <a href="/Projects/2020-2021" class={currentPath.includes("2020-2021") ? 'active' : ''}>2020 - 2021</a>
+          <a href="/Projects/2019-2020" class={currentPath.includes("2019-2020") ? 'active' : ''}>2019 - 2020</a>
+          <a href="/Projects/2018-2019" class={currentPath.includes("2018-2019") ? 'active' : ''}>2018 - 2019</a>
+          <a href="/Projects/2017-2018" class={currentPath.includes("2017-2018") ? 'active' : ''}>2017 - 2018</a>
+          <a href="/Projects/2016-2017" class={currentPath.includes("2016-2017") ? 'active' : ''}>2016 - 2017</a>
+          <a href="/Projects/2015-2016" class={currentPath.includes("2015-2016") ? 'active' : ''}>2015 - 2016</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <a href="/Team/Board" class={currentPath.startsWith('/Team') ? 'active' : ''}>Team</a>
+        <div class="dropdown-content">
+          <a href="/Team/Board" class={currentPath === '/Team/Board' ? 'active' : ''}>Board of Directors</a>
+          <a href="/Team/Aerostructures" class={currentPath === '/Team/Aerostructures' ? 'active' : ''}>Aerostructures</a>
+          <a href="/Team/Avionics" class={currentPath === '/Team/Avionics' ? 'active' : ''}>Avionics</a>
+          <a href="/Team/Subsystems" class={currentPath === '/Team/Subsystems' ? 'active' : ''}>Subsystems</a>
+        </div>
+      </div>
+      <a href="/Sponsors/" class={currentPath === '/Sponsors/' ? 'active' : ''}>Sponsors</a>
+      <a href="/Gallery/" class={currentPath === '/Gallery/' ? 'active' : ''}>Gallery</a>
+      <a href="/Contact/" class={currentPath === '/Contact/' ? 'active' : ''}>Contact Us</a>
+    </div>
+
+    <div class="mobile-overlay">
+      <button class="close-btn" aria-label="Close Menu">&times;</button>
+      <nav>
+        <a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a>
+        <a href="/about-us/" class={currentPath === '/about-us/' ? 'active' : ''}>About Us</a>
+        <div class="mobile-dropdown">
+          <button type="button" class="mobile-dropdown-toggle">
+            Projects
+            <span class="arrow">&#9662;</span>
+          </button>
+          <div class="mobile-dropdown-content">
+            <a href="/Projects/" class={currentPath === '/Projects/' ? 'active' : ''}>Project Overview</a>
+            <a href="/Projects/2024-2025" class={currentPath.includes("2024-2025") ? 'active' : ''}>2024 - 2025</a>
+            <a href="/Projects/2023-2024" class={currentPath.includes("2023-2024") ? 'active' : ''}>2023 - 2024</a>
+            <a href="/Projects/2022-2023" class={currentPath.includes("2022-2023") ? 'active' : ''}>2022 - 2023</a>
+            <a href="/Projects/2021-2022" class={currentPath.includes("2021-2022") ? 'active' : ''}>2021 - 2022</a>
+            <a href="/Projects/2020-2021" class={currentPath.includes("2020-2021") ? 'active' : ''}>2020 - 2021</a>
+            <a href="/Projects/2019-2020" class={currentPath.includes("2019-2020") ? 'active' : ''}>2019 - 2020</a>
+            <a href="/Projects/2018-2019" class={currentPath.includes("2018-2019") ? 'active' : ''}>2018 - 2019</a>
+            <a href="/Projects/2017-2018" class={currentPath.includes("2017-2018") ? 'active' : ''}>2017 - 2018</a>
+            <a href="/Projects/2016-2017" class={currentPath.includes("2016-2017") ? 'active' : ''}>2016 - 2017</a>
+            <a href="/Projects/2015-2016" class={currentPath.includes("2015-2016") ? 'active' : ''}>2015 - 2016</a>
+          </div>
+        </div>
+        <a href="/Team/Board" class={currentPath.startsWith('/Team') ? 'active' : ''}>Team</a>
+        <a href="/Sponsors/" class={currentPath === '/Sponsors/' ? 'active' : ''}>Sponsors</a>
+        <a href="/Gallery/" class={currentPath === '/Gallery/' ? 'active' : ''}>Gallery</a>
+        <a href="/Contact/" class={currentPath === '/Contact/' ? 'active' : ''}>Contact Us</a>
+      </nav>
   </div>
-  <div class="navbar">
-    <a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a>
-    <a href="/about-us/" class={currentPath === '/about-us/' ? 'active' : ''}>About Us</a>
-    <div class="dropdown">
-      <a href="/Projects/" class={currentPath.startsWith('/Projects') ? 'active' : ''}>Projects</a>
-      <div class="dropdown-content">
-        <a href="/Projects/2023-2024" class={currentPath.includes("2023-2024") ? 'active' : ''}>2023 - 2024</a>
-        <a href="/Projects/2022-2023" class={currentPath.includes("2022-2023") ? 'active' : ''}>2022 - 2023</a>
-        <a href="/Projects/2021-2022" class={currentPath.includes("2021-2022") ? 'active' : ''}>2021 - 2022</a>
-        <a href="/Projects/2020-2021" class={currentPath.includes("2020-2021") ? 'active' : ''}>2020 - 2021</a>
-        <a href="/Projects/2019-2020" class={currentPath.includes("2019-2020") ? 'active' : ''}>2019 - 2020</a>
-        <a href="/Projects/2018-2019" class={currentPath.includes("2018-2019") ? 'active' : ''}>2018 - 2019</a>
-        <a href="/Projects/2017-2018" class={currentPath.includes("2017-2018") ? 'active' : ''}>2017 - 2018</a>
-        <a href="/Projects/2016-2017" class={currentPath.includes("2016-2017") ? 'active' : ''}>2016 - 2017</a>
-        <a href="/Projects/2015-2016" class={currentPath.includes("2015-2016") ? 'active' : ''}>2015 - 2016</a>
-      </div>
-    </div>
-    <div class="dropdown">
-      <a href="/Team/Board" class={currentPath.startsWith('/Team') ? 'active' : ''}>Team</a>
-      <div class="dropdown-content">
-        <a href="/Team/Board" class={currentPath === '/Team/Board' ? 'active' : ''}>Board of Directors</a>
-        <a href="/Team/Aerostructures" class={currentPath === '/Team/Aerostructures' ? 'active' : ''}>Aerostructures</a>
-        <a href="/Team/Avionics" class={currentPath === '/Team/Avionics' ? 'active' : ''}>Avionics</a>
-        <a href="/Team/Subsystems" class={currentPath === '/Team/Subsystems' ? 'active' : ''}>Subsystems</a>
-      </div>
-    </div>
-    <a href="/Sponsors/" class={currentPath === '/Sponsors/' ? 'active' : ''}>Sponsors</a>
-    <a href="/Gallery/" class={currentPath === '/Gallery/' ? 'active' : ''}>Gallery</a>
-    <a href="/Contact/" class={currentPath === '/Contact/' ? 'active' : ''}>Contact Us</a>
+
   </div>
 </div>
