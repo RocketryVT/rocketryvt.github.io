@@ -36,14 +36,14 @@ import Button from "./Button.astro";
 
   .section-description {
     font-family: 'Poppins';
-    font-size: 16px;
+    font-size: 24px;
     font-style: normal;
     font-weight: 300;
     letter-spacing: normal;
     line-height: 28.8px;
     text-size-adjust: 100%;
     margin-bottom: 1rem;
-    max-width: 400px;
+    max-width: 600px;
   }
 
   .section-image {
@@ -55,10 +55,52 @@ import Button from "./Button.astro";
   .section-image img {
     width: 100%;
     height: auto;
+    border-radius: 8px;
   }
 
   .flipped {
     flex-direction: row-reverse;
+  }
+
+  @media (max-width: 768px) {
+    .section {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    .section.flipped {
+      flex-direction: column;
+    }
+
+    .section-text {
+      padding-right: 0;
+      padding-left: 0;
+      padding-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 32px;
+      line-height: 40px;
+    }
+
+    .section-description {
+      font-size: 18px;
+      line-height: 24px;
+      max-width: 100%;
+    }
+
+    .section-image {
+      max-width: 100%;
+      padding-right: 0;
+      width: 100%;
+    }
+
+    .section-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
   }
 
 </style>
