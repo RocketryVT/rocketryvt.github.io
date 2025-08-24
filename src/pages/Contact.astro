@@ -1,80 +1,63 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import QR from "../assets/images/rocket-signup-qr-fall-2025.png"
 ---
 
 <style>
-  .flex-container {
+  .main-title {
+    text-align: center;
+    color: rgb(134, 31, 65);
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 3rem;
+  }
+
+  .contact-section {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 4rem;
-  }
-  .info-cell,
-  .form-cell {
-    flex: 1;
-    padding-left: 20px;
-    min-width: 300px;
+    padding: 2rem 4rem;
+    margin-bottom: 4rem;
   }
 
-  .name-fields div {
+  .qr-section {
+    flex: 1;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding-right: 2rem;
   }
 
-  .name-fields div {
-    flex: 1;
-    margin-right: 10px;
-    display: flex;
-    flex-direction: column;
+  .qr-code {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 1rem;
   }
 
-  .form-cell form {
-    display: flex;
-    flex-direction: column;
-  }
-  .form-cell form .name-fields {
-    display: flex;
-    justify-content: space-between;
-  }
-  .form-cell form .name-fields div {
-    flex: 1;
-    margin-right: 10px;
-  }
-  .form-cell form .name-fields input:last-child {
-    margin-right: 0;
-  }
-  .form-cell form input,
-  .form-cell form select,
-  .form-cell form textarea {
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-  }
-  .form-cell form button {
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
+  .qr-text {
+    color: rgb(134, 31, 65);
+    font-size: 1.1rem;
+    font-weight: 500;
   }
 
-  .learn-more {
-    display: inline-block;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    background-color: transparent;
-    color: black;
-    text-decoration: none;
+  .application-link {
+    color: rgb(134, 31, 65);
+    text-decoration: underline;
     font-weight: bold;
-    border-radius: 6.4px;
-    border: 2px solid black;
-    text-align: center;
-    transition:
-      background-color 0.3s,
-      color 0.3s;
+    font-size: 1.1rem;
   }
 
-  .learn-more:hover {
-    background-color: black;
-    color: white;
+  .signup-deadline {
+    color: rgb(134, 31, 65);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .contact-info {
+    flex: 1;
+    padding-left: 2rem;
   }
 
   .info-bold {
@@ -94,69 +77,49 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     margin-top: 2rem;
     margin-bottom: 1rem;
   }
+  
   .text-maroon {
     color: rgb(134, 31, 65);
   }
 
   @media (max-width: 840px) {
-    .flex-container {
-      flex-direction: column-reverse;
-      padding: 0;
+    .contact-section {
+      flex-direction: column;
+      padding: 0 2rem;
+      text-align: center;
     }
-    .info-cell, .form-cell {
-      padding-left: 0;
-      padding-bottom: 20px;
-      min-width: 0;
+    
+    .qr-section, .contact-info {
+      padding: 0;
+      margin-bottom: 2rem;
+    }
+
+    .main-title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
     }
   }
 </style>
 
 <BaseLayout>
   <div class="container mx-auto px-4">
-    <div class="flex-container">
-      <div class="form-cell">
-        <h2 class="info-bold">Contact Us</h2>
-        <br />
-        <p>
-          Fill out the inquiry form below to contact Rocketry at Virginia Tech.
-        </p>
-        <br />
-        <p>Name (required)</p>
-        <form id="contactForm">
-          <div class="name-fields">
-            <div>
-              <label for="first-name">First Name</label>
-              <input type="text" id="first-name" name="first-name" required />
-            </div>
-            <div>
-              <label for="last-name">Last Name</label>
-              <input type="text" id="last-name" name="last-name" />
-            </div>
-          </div>
-
-          <label for="email">Email (required)</label>
-          <input type="email" id="email" name="email" required />
-
-          <label for="inquiry-type">Inquiry Type</label>
-          <select id="inquiry-type" name="inquiry-type" required>
-            <option value="" disabled selected>Select an option</option>
-            <option value="sponsorship">Sponsorship</option>
-            <option value="membership">Membership</option>
-            <option value="Outreach">Outreach</option>
-            <option value="general">General Inquiry</option>
-          </select>
-
-          <label for="message">Message (required)</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-
-          <button type="submit" class="learn-more">Submit</button>
-        </form>
+    <h1 class="main-title">Contact Us</h1>
+    
+    <div class="contact-section">
+      <div class="qr-section">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfeDq41DUnpF_tKUTyxfHMAwlZl8EyTpRhG-ZJgI8hasDH5Ww/viewform" target="_blank">
+          <img src={QR.src} alt="QR Code for Rocketry VT Application Form" class="qr-code" />
+        </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfeDq41DUnpF_tKUTyxfHMAwlZl8EyTpRhG-ZJgI8hasDH5Ww/viewform" target="_blank" class="application-link">Application Form</a>
+        <p class="signup-deadline">Signup Deadline: September 5, 2025 at 11:59 PM</p>
       </div>
-      <div class="info-cell">
+      
+      <div class="contact-info">
         <p>
           <strong class="info-bold">EMAIL ADDRESS</strong><br
           />rocketry.vt@gmail.com
         </p>
+        <br />
         <p>
           <strong class="info-bold">MAILING ADDRESS</strong><br />Advanced
           Engineering Design Lab<br />501 Industrial Park Road<br />Blacksburg,
@@ -164,6 +127,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         </p>
       </div>
     </div>
+    
     <div class="details">
       <h2 class="section-title">Who can join Rocketry at Virginia Tech?</h2>
       <p>
@@ -212,32 +176,3 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     </div>
   </div>
 </BaseLayout>
-
-<script>
-  function handleSubmit(event: any) {
-    event.preventDefault();
-    const firstName =
-      (document.getElementById("first-name") as HTMLInputElement)?.value || "";
-    const lastName =
-      (document.getElementById("last-name") as HTMLInputElement)?.value || "";
-    const email =
-      (document.getElementById("email") as HTMLInputElement)?.value || "";
-    const inquiryType =
-      (document.getElementById("inquiry-type") as HTMLSelectElement)?.value ||
-      "";
-    const message =
-      (document.getElementById("message") as HTMLTextAreaElement)?.value || "";
-
-    const subject = `Inquiry from ${firstName} ${lastName}: ${inquiryType}`;
-    const body = `Name: ${firstName} ${lastName}\nEmail: ${email}\nInquiry Type: ${inquiryType}\n\nMessage:\n${message}`;
-
-    const mailtoLink = `mailto:rocketry.vt@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoLink;
-  }
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("contactForm");
-    if (form) {
-      form.addEventListener("submit", handleSubmit);
-    }
-  });
-</script>

@@ -10,14 +10,55 @@ import promo_video from '../assets/videos/Spaceport_America_Cup_2018.mp4';
 ---
 <BaseLayout headerColor="dark">
 	<style>
+    .application-banner {
+      background-color: rgb(134, 31, 65);
+      color: white;
+      padding: 12px 0;
+      text-align: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .banner-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .apply-now-link {
+      color: white;
+      text-decoration: underline;
+      font-weight: bold;
+      margin-left: 8px;
+      transition: opacity 0.3s ease;
+    }
+
+    .apply-now-link:hover {
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .application-banner {
+        font-size: 14px;
+        padding: 10px 0;
+      }
+    }
+
     .background-video {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 56.25vw; /* 16:9 aspect ratio */
+      min-height: 100vh;
+      min-width: 177.77vh; /* 16:9 aspect ratio */
+      transform: translate(-50%, -50%);
       z-index: -1;
+      border: none;
+      pointer-events: none;
     }
 
     .content-wrapper {
@@ -126,11 +167,25 @@ import promo_video from '../assets/videos/Spaceport_America_Cup_2018.mp4';
   }
     
 </style>
+
+<!-- Application Banner -->
+<div class="application-banner">
+  <div class="banner-content">
+    🚀 Applications are now open for Fall 2025! 
+    <a href="/Contact" class="apply-now-link">Apply Now</a>
+  </div>
+</div>
+
 <div class="content-wrapper">
-    <video class="background-video" autoplay="true" loop="true" muted="true"playsinline="true">
-      <source src={promo_video} type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
+    <iframe 
+      class="background-video" 
+      src="https://www.youtube.com/embed/Ac1cOiMtIZA?si=FJMVE0_nUbTXTO0f&controls=0&autoplay=1&mute=1&loop=1&playlist=Ac1cOiMtIZA" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      referrerpolicy="strict-origin-when-cross-origin" 
+      allowfullscreen>
+    </iframe>
     <h1 class="main-title">ROCKETRY AT VIRGINIA TECH</h1>
     <h4 class="subtitle">Pushing the limits of high-powered rocketry.</h4>
 </div>

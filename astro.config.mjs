@@ -6,8 +6,10 @@ import tailwind from '@astrojs/tailwind';
 
 import preact from '@astrojs/preact';
 
+import partytown from '@astrojs/partytown';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rocketryvt.github.io',
-  integrations: [tailwind(), preact(), sitemap()]
+  integrations: [tailwind(), preact(), sitemap(), partytown({ config: { forward: ['dataLayer.push'] } })]
 });
