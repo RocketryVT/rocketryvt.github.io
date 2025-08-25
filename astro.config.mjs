@@ -11,6 +11,8 @@ import partytown from '@astrojs/partytown';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rocketryvt.github.io',
-  prefetch: true,
+  prefetch: {
+    prefetchAll: true
+  },
   integrations: [tailwind(), preact(), sitemap(), partytown({ config: { forward: ['dataLayer.push'] } })]
 });
