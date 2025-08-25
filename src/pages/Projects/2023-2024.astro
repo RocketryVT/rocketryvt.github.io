@@ -1,22 +1,25 @@
 ---
 import ProjectLayout from '../../components/ProjectLayout.astro';
-// import spectr from "../../assets/images/Projects/SPECTR.png";
+import report from "../../assets/documents/2023-2024_ROADKILL_Report.pdf";
+import podium from "../../assets/documents/2023-2024_ROADKILL_Podium.pdf";
 
 const projectData = {
-  name: "TODO",
+  name: "INFERNO",
   year: "2023-2024",
 //   subtitle: "THE FIRST IREC ROCKET",
 //   image: spectr,
 //   image_alt: "SPECTR Rocket",
   text: {
-    '': "hi",
+    '': "The first rocket with our ADS system that utilzes a semi-custom PCB designed for a Raspberry Pi Pico microcontroller. Having moved away from BeagleBone Black.",
   },
   overview: {
     height: "124.00 in.",
     diameter: "6.23 in.",
     lift_off_mass: "52.2 lbs.",
     motor: "AEROTECH TODO"
-  }
+  },
+  reportUrl: report,
+  podiumUrl: podium,
 };
 ---
 

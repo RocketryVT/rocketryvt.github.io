@@ -4,13 +4,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
+    margin: 50px auto;
+    padding: 0 20px;
+    width: 100%;
   }
 
   .instagram-embed {
     max-width: 540px;
     width: 100%;
+    margin: 0 auto;
   }
+
+  @media (max-width: 768px) {
+    .instagram-embed-container {
+      margin: 30px auto;
+      padding: 0 15px;
+    }
+    
+    .instagram-embed {
+      max-width: 100%;
+    }
+  }
+  
 </style>
 <div class="instagram-embed-container">
   <div class="instagram-embed">

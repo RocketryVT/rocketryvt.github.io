@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Image from "astro/components/Image.astro";
 
-const { name, year, subtitle, image, image_alt, text, overview } = Astro.props;
+const { name, year, subtitle, image, image_alt, text, overview, reportUrl, podiumUrl, posterImage, posterImageAlt } = Astro.props;
 ---
 
 <BaseLayout>
@@ -14,6 +14,57 @@ const { name, year, subtitle, image, image_alt, text, overview } = Astro.props;
 
         {subtitle && (
           <h3 class="text-xl mb-8 text-center">{subtitle}</h3>
+        )}
+
+        {(reportUrl || podiumUrl) && (
+          <div class="text-center mb-8">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              {reportUrl && (
+                <a 
+                  href={reportUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+                >
+                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                  View Report
+                </a>
+              )}
+              
+              {podiumUrl && (
+                <a 
+                  href={podiumUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg transition-colors duration-200 shadow-md hover:shadow-lg"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                      xmlns="http://www.w3.org/2000/svg" stroke="currentColor" stroke-width="1.5"
+                      stroke-linecap="round" stroke-linejoin="round" shape-rendering="geometricPrecision"
+                      aria-labelledby="title desc" role="img" class="mr-2">
+                    <title id="title">Poster / Presentation Icon</title>
+                    <desc id="desc">A stylized document with header and content blocks</desc>
+
+                    <!-- Poster outline -->
+                    <rect x="4" y="3" width="16" height="18" rx="2"/>
+
+                    <!-- Header divider -->
+                    <path d="M4 7h16"/>
+
+                    <!-- Content blocks (filled for legibility at small sizes) -->
+                    <rect x="6.5" y="9"   width="5"   height="3"   rx="0.5" fill="currentColor" stroke="none"/>
+                    <rect x="12.5" y="9"  width="5.5" height="1.2" rx="0.6" fill="currentColor" stroke="none"/>
+                    <rect x="12.5" y="11" width="4.2" height="1.2" rx="0.6" fill="currentColor" stroke="none"/>
+                    <rect x="6.5" y="14.5" width="11.5" height="1.2" rx="0.6" fill="currentColor" stroke="none"/>
+                    <rect x="6.5" y="17"   width="8.5"  height="1.2" rx="0.6" fill="currentColor" stroke="none"/>
+                  </svg>
+                  View Podium Session
+                </a>
+              )}
+            </div>
+          </div>
         )}
         
         {image && (
@@ -54,6 +105,25 @@ const { name, year, subtitle, image, image_alt, text, overview } = Astro.props;
                   <div>{value}</div>
                 </>
               ))}
+            </div>
+          </div>
+        )}
+
+        {posterImage && (
+          <div class="mt-8 px-4 md:px-40">
+            <h3 class="text-2xl font-extrabold mb-4">PROJECT POSTER</h3>
+            <hr class="mb-4" />
+            <div class="flex justify-center">
+              <div class="max-w-4xl w-full">
+                <a href={posterImage.src} target="_blank" rel="noopener noreferrer" class="block cursor-pointer">
+                  <Image 
+                    src={posterImage} 
+                    alt={posterImageAlt || "Project Poster"} 
+                    class="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 hover:scale-[1.02]"
+                  />
+                  <p class="text-center text-sm text-gray-600 mt-2">Click to view fullscreen</p>
+                </a>
+              </div>
             </div>
           </div>
         )}
