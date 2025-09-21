@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Picture, Image } from 'astro:assets';
+
+import Daniel from '../../assets/images/Board/Daniel_Headshot.png';
+import Vanessa from '../../assets/images/Board/Vanessa_Headshot.jpg';
+import Brady from '../../assets/images/Board/Brady_Headshot.jpg';
+import Cannon from '../../assets/images/Board/Cannon_Headshot.jpg';
+// import Cian
+---
+
+<style>
+    .board-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+  
+    .board {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr); /* Ensure there are always 5 columns */
+      gap: 20px;
+      width: 100%;
+      max-width: 1600px; /* Optional: Set a max-width to limit the width of the grid */
+    }
+  
+    .board-member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  
+    .board-member img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover; /* Crop the images to fit the container */
+      border-radius: 5px;
+    }
+  
+    .board-member h2 {
+      margin-top: 1rem;
+      font-size: 1.5rem; /* Make the names bigger */
+      font-weight: 600; /* Adjust the font weight as needed */
+    }
+  
+    .board-member p {
+      margin-top: 0.5rem;
+      font-size: 1rem; /* Make the titles smaller */
+      font-weight: 300; /* Make the titles have a thinner stroke */
+    }
+
+    @media (max-width: 768px) {
+        .board {
+            grid-template-columns: 1fr; /* Switch to a single column layout on smaller screens */
+        }
+    }
+  </style>
+
+<BaseLayout>
+    <div class="board-container">
+      <h1>Team Leads</h1>
+      <div class="board">
+        <div class="board-member">
+          <Image src={Daniel} alt="Daniel Young" loading="eager"/>
+          <h2>Daniel Young</h2>
+          <p>Project Manager</p>
+        </div>
+
+        <a href="/Team/Aerostructures" class="board-member">
+            <Image src={Cannon} alt="Cannon Biscoe" loading="eager" class="transition-transform duration-300 hover:scale-110"/>
+          <h2>Cannon Biscoe</h2>
+          <p>Aerostructures Lead</p>
+        </a>
+  
+        <a href="/Team/Avionics" class="board-member">
+          <Image src={Daniel} alt="Cian Capacci" loading="eager" class="transition-transform duration-300 hover:scale-110"/>
+          <h2>Cian Capacci</h2>
+          <p>Avionics Lead</p>
+        </a>
+  
+        <a href="/Team/Subsystems" class="board-member">
+          <Image src={Brady} alt="Brady Rehkop" loading="eager"class="transition-transform duration-300 hover:scale-110"/>
+          <h2>Brady Rehkop</h2>
+          <p>Subsystems Lead</p>
+        </a>
+  
+        <div class="board-member">
+          <Image src={Vanessa} alt="Vanessa Bushell" loading="eager"/>
+          <h2>Vanessa Bushell</h2>
+          <p>Treasurer</p>
+        </div>
+      </div>
+    </div>
+  </BaseLayout>

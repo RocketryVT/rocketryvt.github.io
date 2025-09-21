@@ -130,6 +130,7 @@ import Logo from "./Logo.astro";
     justify-content: center;
     align-items: center;
     transition: opacity 0.3s;
+  overflow: auto;
   }
 
   .mobile-overlay.show {
@@ -148,21 +149,30 @@ import Logo from "./Logo.astro";
   .mobile-overlay nav {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    align-items: center;
+  gap: 1rem;
+  align-items: stretch;
   }
   .mobile-overlay a {
-    font-size: 2rem;
+  font-size: 2rem;
     color: inherit;
     text-decoration: none;
+  display: block;
+  width: 100%;
+  text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid color-mix(in oklab, currentColor 10%, transparent);
   }
+  .mobile-overlay a:last-child { border-bottom: none; }
+  .mobile-dropdown-toggle { border-bottom: 1px solid color-mix(in oklab, currentColor 10%, transparent); }
+  .mobile-dropdown-content a { border-bottom: none; }
+  .mobile-overlay a:hover { text-decoration: underline; }
   .mobile-overlay a.active {
     text-decoration: underline;
   }
   .mobile-dropdown {
   width: 100%;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   position: relative;
 }
 .mobile-dropdown-toggle {
@@ -172,27 +182,43 @@ import Logo from "./Logo.astro";
   font-size: 2rem;
   cursor: pointer;
   width: 100%;
-  text-align: center;
-  padding: 0.5rem 0;
+  text-align: left;
+  padding: 0.75rem 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
-.mobile-dropdown-toggle .arrow {
-  margin-left: 0.5rem;
-  font-size: 1.2rem;
+.mobile-dropdown-toggle .chevron {
+  margin-left: 0.75rem;
+  width: 0.9em;
+  height: 0.9em;
+  flex-shrink: 0;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+.mobile-dropdown-toggle .chevron path {
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.mobile-dropdown.open .chevron {
+  transform: rotate(90deg);
 }
 .mobile-dropdown-content {
   display: none;
   flex-direction: column;
   gap: 1rem;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
+  padding-left: 1rem;
 }
 .mobile-dropdown-content.show {
   display: flex;
 }
 .mobile-dropdown-content a {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
+  padding: 0.5rem 1rem;
 }
 
   /* Media query for smaller screens */
@@ -242,19 +268,16 @@ import Logo from "./Logo.astro";
     const overlay = document.querySelector('.mobile-overlay');
     const closeBtn = document.querySelector('.mobile-overlay .close-btn');
     const overlayLinks = document.querySelectorAll('.mobile-overlay a');
-    const mobileDropdownToggle = document.querySelector('.mobile-dropdown-toggle');
-    const mobileDropdownContent = document.querySelector('.mobile-dropdown-content');
-
-    if (mobileDropdownToggle && mobileDropdownContent) {
-      mobileDropdownToggle.addEventListener('click', () => {
-        mobileDropdownContent.classList.toggle('show');
-        // Optionally toggle arrow direction
-        const arrow = mobileDropdownToggle.querySelector('.arrow');
-        if (arrow) {
-          arrow.textContent = mobileDropdownContent.classList.contains('show') ? '▲' : '▼';
-        }
+    const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    mobileDropdownToggles.forEach((toggle) => {
+      const parent = toggle.closest('.mobile-dropdown');
+      const content = parent ? parent.querySelector('.mobile-dropdown-content') : null;
+      if (!content) return;
+      toggle.addEventListener('click', () => {
+        const isOpen = content.classList.toggle('show');
+  parent && parent.classList.toggle('open', isOpen);
       });
-    }
+    });
 
     if (hamburger && overlay) {
       hamburger.addEventListener('click', () => {
@@ -312,9 +335,9 @@ import Logo from "./Logo.astro";
         </div>
       </div>
       <div class="dropdown">
-        <a href="/Team/Board" class={currentPath.startsWith('/Team') ? 'active' : ''}>Team</a>
+        <a href="/Team/Leads" class={currentPath.startsWith('/Team') ? 'active' : ''}>Team</a>
         <div class="dropdown-content">
-          <a href="/Team/Board" class={currentPath === '/Team/Board' ? 'active' : ''}>Board of Directors</a>
+          <a href="/Team/Leads" class={currentPath === '/Team/Leads' ? 'active' : ''}>Team Leads</a>
           <a href="/Team/Aerostructures" class={currentPath === '/Team/Aerostructures' ? 'active' : ''}>Aerostructures</a>
           <a href="/Team/Avionics" class={currentPath === '/Team/Avionics' ? 'active' : ''}>Avionics</a>
           <a href="/Team/Subsystems" class={currentPath === '/Team/Subsystems' ? 'active' : ''}>Subsystems</a>
@@ -332,8 +355,10 @@ import Logo from "./Logo.astro";
         <a href="/about-us/" class={currentPath === '/about-us/' ? 'active' : ''}>About Us</a>
         <div class="mobile-dropdown">
           <button type="button" class="mobile-dropdown-toggle">
-            Projects
-            <span class="arrow">&#9662;</span>
+            <span>Projects</span>
+            <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6l6 6-6 6"/>
+            </svg>
           </button>
           <div class="mobile-dropdown-content">
             <a href="/Projects/" class={currentPath === '/Projects/' ? 'active' : ''}>Project Overview</a>
@@ -349,7 +374,20 @@ import Logo from "./Logo.astro";
             <a href="/Projects/2015-2016" class={currentPath.includes("2015-2016") ? 'active' : ''}>2015 - 2016</a> -->
           </div>
         </div>
-        <a href="/Team/Board" class={currentPath.startsWith('/Team') ? 'active' : ''}>Team</a>
+        <div class="mobile-dropdown">
+          <button type="button" class="mobile-dropdown-toggle">
+            <span>Team</span>
+            <svg class="chevron" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M9 6l6 6-6 6"/>
+            </svg>
+          </button>
+          <div class="mobile-dropdown-content">
+            <a href="/Team/Leads" class={currentPath === '/Team/Leads' ? 'active' : ''}>Team Leads</a>
+            <a href="/Team/Aerostructures" class={currentPath === '/Team/Aerostructures' ? 'active' : ''}>Aerostructures</a>
+            <a href="/Team/Avionics" class={currentPath === '/Team/Avionics' ? 'active' : ''}>Avionics</a>
+            <a href="/Team/Subsystems" class={currentPath === '/Team/Subsystems' ? 'active' : ''}>Subsystems</a>
+          </div>
+        </div>
         <a href="/Sponsors/" class={currentPath === '/Sponsors/' ? 'active' : ''}>Sponsors</a>
         <a href="/Gallery/" class={currentPath === '/Gallery/' ? 'active' : ''}>Gallery</a>
         <a href="/Contact/" class={currentPath === '/Contact/' ? 'active' : ''}>Contact Us</a>
