@@ -1,6 +1,6 @@
 ---
 import { Picture, Image } from 'astro:assets'
-const { title, description, image, image_description='', link, flip } = Astro.props;
+const { title, description, image, image_description='', link, button_text, flip } = Astro.props;
 import Button from "./Button.astro";
 ---
 
@@ -62,7 +62,7 @@ import Button from "./Button.astro";
     flex-direction: row-reverse;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 840px) {
     .section {
       flex-direction: column;
       padding: 1rem;
@@ -114,7 +114,7 @@ import Button from "./Button.astro";
       <p>{description}</p>
     </div>
     <!-- <a href={link} class="learn-more">LEARN MORE</a> -->
-    <Button url={link} text="LEARN MORE" />
+    <Button url={link} text={button_text} />
   </div>
   <div class="section-image">
     <Image src={image} alt={image_description} />

@@ -2,10 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { Picture, Image } from 'astro:assets';
 
-import Daniel from '../../assets/images/Board/Daniel_Headshot.png';
-import Vanessa from '../../assets/images/Board/Vanessa_Headshot.jpg';
-import Brady from '../../assets/images/Board/Brady_Headshot.jpg';
-import Cannon from '../../assets/images/Board/Cannon_Headshot.jpg';
+import Daniel from '../../assets/images/Board/Daniel.jpeg';
+import Vanessa from '../../assets/images/Board/Vanessa.jpeg';
+import Brady from '../../assets/images/Board/Brady.jpeg';
+import Cannon from '../../assets/images/Board/Cannon.jpeg';
+import Cian from '../../assets/images/Board/Cian.jpeg';
 // import Cian
 ---
 
@@ -52,9 +53,21 @@ import Cannon from '../../assets/images/Board/Cannon_Headshot.jpg';
       font-weight: 300; /* Make the titles have a thinner stroke */
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
         .board {
-            grid-template-columns: 1fr; /* Switch to a single column layout on smaller screens */
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 640px) {
+        .board {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 400px) {
+        .board {
+            grid-template-columns: 1fr;
         }
     }
   </style>
@@ -76,7 +89,7 @@ import Cannon from '../../assets/images/Board/Cannon_Headshot.jpg';
         </a>
   
         <a href="/Team/Avionics" class="board-member">
-          <Image src={Daniel} alt="Cian Capacci" loading="eager" class="transition-transform duration-300 hover:scale-110"/>
+          <Image src={Cian} alt="Cian Capacci" loading="eager" class="transition-transform duration-300 hover:scale-110"/>
           <h2>Cian Capacci</h2>
           <p>Avionics Lead</p>
         </a>

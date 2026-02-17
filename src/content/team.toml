@@ -1,31 +1,31 @@
-[[Team]]
-id = "Daniel Young"
-url = "/src/assets/images/Board/Old/Daniel_Crop.jpg"
-title = "Aerostructures Lead"
-people = [
-  "Daniel Young"
-]
+# [[Team]]
+# id = "Daniel Young"
+# url = "/src/assets/images/Board/Old/Daniel_Crop.jpg"
+# title = "Aerostructures Lead"
+# people = [
+#   "Daniel Young"
+# ]
 
-[[Team]]
-id = "Dawsyn Schraiber"
-url = "/src/assets/images/Board/Old/Dawsyn_Crop.jpeg"
-title = "Avionics Lead"
-people = [
-  "Dawsyn Schraiber"
-]
+# [[Team]]
+# id = "Dawsyn Schraiber"
+# url = "/src/assets/images/Board/Old/Dawsyn_Crop.jpeg"
+# title = "Avionics Lead"
+# people = [
+#   "Dawsyn Schraiber"
+# ]
 
-[[Team]]
-id = "Ben Anderson"
-url = "/src/assets/images/Board/Old/Ben.jpg"
-title = "Subsystems Lead"
-people = [
-  "Ben Anderson"
-]
+# [[Team]]
+# id = "Ben Anderson"
+# url = "/src/assets/images/Board/Old/Ben.jpg"
+# title = "Subsystems Lead"
+# people = [
+#   "Ben Anderson"
+# ]
 
-[[Team]]
-id = "Vanessa Bushell"
-url = "/src/assets/images/Board/Old/vanessa.png"
-title = "Treasurer"
-people = [
-  "Vanessa Bushell"
-]
+# [[Team]]
+# id = "Vanessa Bushell"
+# url = "/src/assets/images/Board/Old/vanessa.png"
+# title = "Treasurer"
+# people = [
+#   "Vanessa Bushell"
+# ]
