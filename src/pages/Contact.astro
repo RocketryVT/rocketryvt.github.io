@@ -1,6 +1,5 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import QR from "../assets/images/rocket-signup-qr-fall-2025.png"
 ---
 
 <style>
@@ -16,8 +15,8 @@ import QR from "../assets/images/rocket-signup-qr-fall-2025.png"
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 2rem 4rem;
-    margin-bottom: 4rem;
+    padding: 3rem 4rem;
+    margin-bottom: 2rem;
   }
 
   .qr-section {
@@ -75,30 +74,43 @@ import QR from "../assets/images/rocket-signup-qr-fall-2025.png"
     font-family: "Poppins", sans-serif;
     font-size: 42px;
     font-style: normal;
-    font-weight: 300;
-    line-height: 37.8px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
     text-decoration-style: solid;
   }
 
   .section-title {
     color: rgb(134, 31, 65);
-    font-size: 28px;
-    font-weight: bold;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
+    font-size: 22px;
+    font-weight: 700;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
+  }
+
+  .details {
+    padding: 0 4rem 3rem;
+    max-width: 900px;
+  }
+
+  .details p {
+    line-height: 1.7;
+    color: #333;
+    font-size: 17px;
   }
   
   .text-maroon {
     color: rgb(134, 31, 65);
   }
 
-  @media (max-width: 840px) {
+  @media (max-width: 1024px) {
     .contact-section {
       flex-direction: column;
-      padding: 0 2rem;
-      text-align: center;
+      padding: 2rem;
+      text-align: left;
     }
-    
+
     .qr-section, .contact-info {
       padding: 0;
       margin-bottom: 2rem;
@@ -108,10 +120,14 @@ import QR from "../assets/images/rocket-signup-qr-fall-2025.png"
       font-size: 2.5rem;
       margin-bottom: 2rem;
     }
+
+    .details {
+      padding: 0 2rem 2rem;
+    }
   }
 </style>
 
-<BaseLayout>
+<BaseLayout pageTitle="Contact | Rocketry at Virginia Tech">
   <div class="container mx-auto px-4">
     <div class="contact-section">
       <!-- <div class="qr-section">

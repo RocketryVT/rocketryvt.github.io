@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { Picture, Image } from 'astro:assets';
+import { Image } from 'astro:assets';
 
 import Daniel from '../../assets/images/Board/Daniel.jpeg';
 import Vanessa from '../../assets/images/Board/Vanessa.jpeg';
@@ -16,7 +16,15 @@ import Cian from '../../assets/images/Board/Cian.jpeg';
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 20px;
+      padding: 2.5rem 1.25rem;
+    }
+
+    .board-container h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      font-family: 'Roboto', sans-serif;
+      margin-bottom: 2rem;
+      color: var(--brand-color, rgb(134, 31, 65));
     }
   
     .board {
@@ -33,24 +41,32 @@ import Cian from '../../assets/images/Board/Cian.jpeg';
       align-items: center;
       text-align: center;
     }
-  
+
+    .board-member .img-wrap {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 6px;
+    }
+
     .board-member img {
       width: 100%;
       height: 300px;
-      object-fit: cover; /* Crop the images to fit the container */
-      border-radius: 5px;
+      object-fit: cover;
+      border-radius: 6px;
+      display: block;
     }
-  
+
     .board-member h2 {
-      margin-top: 1rem;
-      font-size: 1.5rem; /* Make the names bigger */
-      font-weight: 600; /* Adjust the font weight as needed */
+      margin-top: 0.85rem;
+      font-size: 1.15rem;
+      font-weight: 600;
     }
-  
+
     .board-member p {
-      margin-top: 0.5rem;
-      font-size: 1rem; /* Make the titles smaller */
-      font-weight: 300; /* Make the titles have a thinner stroke */
+      margin-top: 0.25rem;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #666;
     }
 
     @media (max-width: 1024px) {
@@ -72,36 +88,46 @@ import Cian from '../../assets/images/Board/Cian.jpeg';
     }
   </style>
 
-<BaseLayout>
+<BaseLayout pageTitle="Team Leads | Rocketry at Virginia Tech">
     <div class="board-container">
       <h1>Team Leads</h1>
       <div class="board">
         <div class="board-member">
-          <Image src={Daniel} alt="Daniel Young" loading="eager"/>
+          <div class="img-wrap">
+            <Image src={Daniel} alt="Daniel Young" loading="eager"/>
+          </div>
           <h2>Daniel Young</h2>
           <p>Project Manager</p>
         </div>
 
         <a href="/Team/Aerostructures" class="board-member">
+          <div class="img-wrap">
             <Image src={Cannon} alt="Cannon Biscoe" loading="eager" class="transition-transform duration-300 hover:scale-110"/>
+          </div>
           <h2>Cannon Biscoe</h2>
           <p>Aerostructures Lead</p>
         </a>
-  
+
         <a href="/Team/Avionics" class="board-member">
-          <Image src={Cian} alt="Cian Capacci" loading="eager" class="transition-transform duration-300 hover:scale-110"/>
+          <div class="img-wrap">
+            <Image src={Cian} alt="Cian Capacci" loading="eager" class="transition-transform duration-300 hover:scale-110"/>
+          </div>
           <h2>Cian Capacci</h2>
           <p>Avionics Lead</p>
         </a>
-  
+
         <a href="/Team/Subsystems" class="board-member">
-          <Image src={Brady} alt="Brady Rehkop" loading="eager"class="transition-transform duration-300 hover:scale-110"/>
+          <div class="img-wrap">
+            <Image src={Brady} alt="Brady Rehkop" loading="eager" class="transition-transform duration-300 hover:scale-110"/>
+          </div>
           <h2>Brady Rehkop</h2>
           <p>Subsystems Lead</p>
         </a>
-  
+
         <div class="board-member">
-          <Image src={Vanessa} alt="Vanessa Bushell" loading="eager"/>
+          <div class="img-wrap">
+            <Image src={Vanessa} alt="Vanessa Bushell" loading="eager"/>
+          </div>
           <h2>Vanessa Bushell</h2>
           <p>Treasurer</p>
         </div>

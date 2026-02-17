@@ -5,55 +5,178 @@ import instagram from '../assets/socials/instagram/01 Gradient Glyph/instagram.p
 import linkedin from '../assets/socials/linkedin/linkedin.svg';
 ---
 <style>
+  footer {
+    background-color: rgb(20, 20, 20);
+    color: #ccc;
+    font-family: 'Poppins', sans-serif;
+    padding: 3rem 4rem 2rem;
+    margin-top: 4rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .footer-brand h3 {
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-brand p {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    color: #999;
+    max-width: 320px;
+    margin: 0;
+  }
+
+  .footer-nav h4,
+  .footer-contact h4 {
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+  }
+
+  .footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+  }
+
+  .footer-nav a {
+    color: #999;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.2s;
+  }
+
+  .footer-nav a:hover {
+    color: white;
+  }
+
+  .footer-contact p {
+    font-size: 0.875rem;
+    color: #999;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .footer-contact a {
+    color: #999;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-contact a:hover {
+    color: white;
+  }
+
+  .footer-bottom {
+    border-top: 1px solid #2a2a2a;
+    padding-top: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    color: #555;
+    margin: 0;
+  }
+
+  .icon-row {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .icon-row img {
+    width: 26px;
+    height: 26px;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+
+  .icon-row a:hover img {
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
     footer {
-      display: flex;
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-bottom {
       flex-direction: column;
-      align-items: center;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
+      align-items: flex-start;
     }
-    .icon-grid {
-      display: flex;
-      gap: 1rem;
-    }
-    .icon-grid img {
-      width: 40px;
-      height: 40px;
-    }
-    h5 {
-      margin-top: 1rem;
-    }
-  </style>
-  
-  <footer>
-    <div class="icon-grid">
-      <a href="https://www.facebook.com/RocketryatVT/" target="_blank" rel="noopener noreferrer">
-        <Image src={facebook} alt="Facebook" loading="eager"/>
-      </a>
-      <a href="https://www.instagram.com/rocketryatvirginiatech/" target="_blank" rel="noopener noreferrer">
-        <Image src={instagram} alt="Instagram" loading="eager"/>
-      </a>
-      <a href="https://www.linkedin.com/company/rocketry-at-virginia-tech/" target="_blank" rel="noopener noreferrer">
-        <Image src={linkedin} alt="LinkedIn" loading="eager"/>
-      </a>
-    </div>
-    <h5>Rocketry at Virginia Tech</h5>
-  </footer>
-
-<!-- ---
-import Social from "./Social.astro";
----
-
-<style>
-   footer {
-       display: flex;
-       gap: 0.5rem;
-       margin-top: 2rem;
-   }
+  }
 </style>
 
 <footer>
-    <Social platform="twitter" username="astrodotbuild" />
-    <Social platform="github" username="withastro" />
-    <Social platform="youtube" username="astrodotbuild" />
-</footer> -->
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Rocketry at Virginia Tech</h3>
+      <p>A student design team competing in the International Rocket Engineering Competition (IREC) — designing, building, and launching high-powered rockets from Blacksburg, VA.</p>
+    </div>
+    <nav class="footer-nav">
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about-us/">About Us</a></li>
+        <li><a href="/Projects/">Projects</a></li>
+        <li><a href="/Team/Leads">Team</a></li>
+        <li><a href="/Sponsors/">Sponsors</a></li>
+        <li><a href="/Gallery/">Gallery</a></li>
+        <li><a href="/Contact/">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="footer-contact">
+      <h4>Contact</h4>
+      <p>
+        <a href="mailto:rocketry.vt@gmail.com">rocketry.vt@gmail.com</a><br />
+        Advanced Engineering Design Lab<br />
+        501 Industrial Park Road<br />
+        Blacksburg, VA 24060
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; {new Date().getFullYear()} Rocketry at Virginia Tech. All rights reserved.</p>
+    <div class="icon-row">
+      <a href="https://www.facebook.com/RocketryatVT/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+        <Image src={facebook} alt="Facebook" loading="eager" />
+      </a>
+      <a href="https://www.instagram.com/rocketryatvirginiatech/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <Image src={instagram} alt="Instagram" loading="eager" />
+      </a>
+      <a href="https://www.linkedin.com/company/rocketry-at-virginia-tech/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        <Image src={linkedin} alt="LinkedIn" loading="eager" />
+      </a>
+    </div>
+  </div>
+</footer>

@@ -57,7 +57,7 @@ import Logo from "./Logo.astro";
   .navbar a {
     color: inherit;
     text-decoration: none;
-    padding: 10px, 15px;
+    padding: 10px 15px;
     margin: 0 20px;
     line-height: 30px;
   }
@@ -221,45 +221,52 @@ import Logo from "./Logo.astro";
   padding: 0.5rem 1rem;
 }
 
-  /* Media query for smaller screens */
-@media (max-width: 840px) {
-  .navmenu {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .navbar {
-    display: none !important;
+  /* Tighten link spacing before hamburger kicks in */
+  @media (max-width: 1280px) {
+    .navbar a {
+      margin: 0 10px;
+    }
   }
 
-  .navbar.show {
-    display: flex;
-  }
+  /* Switch to hamburger at 1024px */
+  @media (max-width: 1024px) {
+    .navmenu {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .navbar {
+      display: none !important;
+    }
 
-  .dropdown:hover .dropdown-content {
-    display: none;
-  }
+    .navbar.show {
+      display: flex;
+    }
 
-  .dropdown.open .dropdown-content {
-    display: block;
-  }
+    .dropdown:hover .dropdown-content {
+      display: none;
+    }
 
-  .dropdown-content {
-    position: static;
-    text-align: right;
-  }
+    .dropdown.open .dropdown-content {
+      display: block;
+    }
 
-  .navbar a {
-    margin: 10px 0;
-    text-align: right;
+    .dropdown-content {
+      position: static;
+      text-align: right;
+    }
+
+    .navbar a {
+      margin: 10px 0;
+      text-align: right;
+    }
+    .hamburger {
+      display: flex;
+    }
+    .top-row {
+      flex-direction: row;
+      align-items: center;
+    }
   }
-  .hamburger {
-    display: flex;
-  }
-  .top-row {
-    flex-direction: row;
-    align-items: center;
-  }
-}
 </style>
 
 <script>

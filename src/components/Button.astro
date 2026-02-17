@@ -4,20 +4,22 @@ const { url, text, new_tab=false } = Astro.props;
 <style>
   .custom-button {
     display: inline-block;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
+    padding: 0.85rem 2rem;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
     background-color: transparent;
-    color: black;
+    color: var(--brand-color, rgb(134, 31, 65));
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 6.4px;
-    border: 2px solid black;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-radius: 4px;
+    border: 2px solid var(--brand-color, rgb(134, 31, 65));
     text-align: center;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.25s, color 0.25s;
   }
 
   .custom-button:hover {
-    background-color: black;
+    background-color: var(--brand-color, rgb(134, 31, 65));
     color: white;
   }
 </style>
