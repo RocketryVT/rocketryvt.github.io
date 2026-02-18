@@ -1,12 +1,14 @@
 ---
-import { Image } from 'astro:assets';
+import { getImage, Image } from 'astro:assets';
 import spaceport_america_2023 from '../assets/images/DSC09439.jpeg';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 import Button from '../components/Button.astro';
+
+const optimizedHero = await getImage({ src: spaceport_america_2023 });
 ---
 
-<BaseLayout pageTitle="About Us | Rocketry at Virginia Tech">
+<BaseLayout pageTitle="About Us | Rocketry at Virginia Tech" preloadImages={[optimizedHero.src]}>
 <style>
   .flex-container {
     display: flex;
@@ -66,7 +68,7 @@ import Button from '../components/Button.astro';
     <Button url="https://www.soundingrocket.org/2025-irec.html" text="Learn more about IREC" new_tab = true/>
   </div>
   <div class="image-cell">
-    <Image src={spaceport_america_2023} alt="Rocketry at Virginia Tech"/>
+    <Image src={spaceport_america_2023} alt="Rocketry at Virginia Tech" loading="eager" fetchpriority="high" />
   </div>
 </div>
 </BaseLayout>

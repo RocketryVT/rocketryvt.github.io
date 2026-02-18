@@ -16,10 +16,6 @@ import Button from "./Button.astro";
     font-family: 'Poppins', sans-serif;
   }
 
-  .section:nth-of-type(even, odd) {
-    background-color: #f1f5f9;
-  }
-
   .section-text {
     flex: 1;
     padding-right: 3rem;
@@ -112,6 +108,6 @@ import Button from "./Button.astro";
     <Button url={link} text={button_text} />
   </div>
   <div class="section-image">
-    <Image src={image} alt={image_description} />
+    <Image src={image} alt={image_description} loading="lazy" />
   </div>
 </div>

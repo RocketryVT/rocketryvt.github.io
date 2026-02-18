@@ -2,12 +2,20 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Instagram from '../components/Instagram.astro';
 import HeroSection from '../components/HeroSection.astro';
+import { getImage } from 'astro:assets';
 
 import experience from '../assets/images/Ohio_Launch_To_Pad.jpg';
 import TeamPhoto from '../assets/images/Carrying_Roadkill_To_Launch.jpg';
 import community from '../assets/images/DSC00049.jpg';
+
+const optimizedExperience = await getImage({ src: experience });
 ---
-<BaseLayout headerColor="dark">
+<BaseLayout headerColor="dark" preloadImages={[optimizedExperience.src]}>
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://www.youtube.com" />
+    <link rel="preconnect" href="https://i.ytimg.com" />
+    <link rel="dns-prefetch" href="https://s.ytimg.com" />
+  </Fragment>
 	<style>
     .application-banner {
       background-color: rgb(134, 31, 65);

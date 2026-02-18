@@ -70,7 +70,7 @@ const { name, year, subtitle, image, image_alt, text, overview, reportUrl, podiu
         {image && (
           <div class={`px-4 md:px-40 ${!text || Object.keys(text).length === 0 ? 'flex justify-center' : ''}`}>
             <div class="flex justify-center">
-              <Image src={image} alt={image_alt} class="w-auto max-h-[60vh] mb-8" />
+              <Image src={image} alt={image_alt} class="w-auto max-h-[60vh] mb-8" loading="eager" fetchpriority="high" />
             </div>
           </div>
         )}

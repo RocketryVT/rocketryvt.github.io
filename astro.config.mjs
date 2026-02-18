@@ -12,7 +12,8 @@ import partytown from '@astrojs/partytown';
 export default defineConfig({
   site: 'https://rocketryvt.github.io',
   prefetch: {
-    prefetchAll: true
+    prefetchAll: true,
+    defaultStrategy: 'viewport',
   },
   integrations: [tailwind(), preact(), sitemap(), partytown({ config: { forward: ['dataLayer.push'] } })]
 });

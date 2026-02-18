@@ -1,13 +1,20 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { Image } from 'astro:assets';
+import { getImage, Image } from 'astro:assets';
 
 import Daniel from '../../assets/images/Board/Daniel.jpeg';
 import Vanessa from '../../assets/images/Board/Vanessa.jpeg';
 import Brady from '../../assets/images/Board/Brady.jpeg';
 import Cannon from '../../assets/images/Board/Cannon.jpeg';
 import Cian from '../../assets/images/Board/Cian.jpeg';
-// import Cian
+
+const [danielOpt, vanessaOpt, bradyOpt, cannonOpt, cianOpt] = await Promise.all([
+  getImage({ src: Daniel }),
+  getImage({ src: Vanessa }),
+  getImage({ src: Brady }),
+  getImage({ src: Cannon }),
+  getImage({ src: Cian }),
+]);
 ---
 
 <style>
@@ -88,13 +95,13 @@ import Cian from '../../assets/images/Board/Cian.jpeg';
     }
   </style>
 
-<BaseLayout pageTitle="Team Leads | Rocketry at Virginia Tech">
+<BaseLayout pageTitle="Team Leads | Rocketry at Virginia Tech" preloadImages={[danielOpt.src, vanessaOpt.src, bradyOpt.src, cannonOpt.src, cianOpt.src]}>
     <div class="board-container">
       <h1>Team Leads</h1>
       <div class="board">
         <div class="board-member">
           <div class="img-wrap">
-            <Image src={Daniel} alt="Daniel Young" loading="eager"/>
+            <Image src={Daniel} alt="Daniel Young" loading="eager" fetchpriority="high"/>
           </div>
           <h2>Daniel Young</h2>
           <p>Project Manager</p>
@@ -102,7 +109,7 @@ import Cian from '../../assets/images/Board/Cian.jpeg';
 
         <a href="/Team/Aerostructures" class="board-member">
           <div class="img-wrap">
-            <Image src={Cannon} alt="Cannon Biscoe" loading="eager" class="transition-transform duration-300 hover:scale-110"/>
+            <Image src={Cannon} alt="Cannon Biscoe" loading="eager" fetchpriority="high" class="transition-transform duration-300 hover:scale-110"/>
           </div>
           <h2>Cannon Biscoe</h2>
           <p>Aerostructures Lead</p>
@@ -110,7 +117,7 @@ import Cian from '../../assets/images/Board/Cian.jpeg';
 
         <a href="/Team/Avionics" class="board-member">
           <div class="img-wrap">
-            <Image src={Cian} alt="Cian Capacci" loading="eager" class="transition-transform duration-300 hover:scale-110"/>
+            <Image src={Cian} alt="Cian Capacci" loading="eager" fetchpriority="high" class="transition-transform duration-300 hover:scale-110"/>
           </div>
           <h2>Cian Capacci</h2>
           <p>Avionics Lead</p>
@@ -118,7 +125,7 @@ import Cian from '../../assets/images/Board/Cian.jpeg';
 
         <a href="/Team/Subsystems" class="board-member">
           <div class="img-wrap">
-            <Image src={Brady} alt="Brady Rehkop" loading="eager" class="transition-transform duration-300 hover:scale-110"/>
+            <Image src={Brady} alt="Brady Rehkop" loading="eager" fetchpriority="high" class="transition-transform duration-300 hover:scale-110"/>
           </div>
           <h2>Brady Rehkop</h2>
           <p>Subsystems Lead</p>
@@ -126,7 +133,7 @@ import Cian from '../../assets/images/Board/Cian.jpeg';
 
         <div class="board-member">
           <div class="img-wrap">
-            <Image src={Vanessa} alt="Vanessa Bushell" loading="eager"/>
+            <Image src={Vanessa} alt="Vanessa Bushell" loading="eager" fetchpriority="high"/>
           </div>
           <h2>Vanessa Bushell</h2>
           <p>Treasurer</p>
