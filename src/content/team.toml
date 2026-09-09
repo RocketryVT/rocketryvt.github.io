@@ -2,38 +2,28 @@
 id = "Cannon Biscoe"
 url = "/src/assets/images/Board/CannonOfficer.JPG"
 title = "Team Captain"
-people = [
-"Cannon Biscoe"
-]
+people = ["Cannon Biscoe"]
 
 [[Team]]
 id = "Ethan George"
 url = "/src/assets/images/Board/EthanOfficer.JPG"
 title = "Subsystems Lead"
-people = [
-"Ethan George"
-]
+people = ["Ethan George"]
 
 [[Team]]
 id = "Ian McKee"
 url = "/src/assets/images/Board/IanOfficer.JPG"
 title = "Aerostructures Lead"
-people = [
-"Ian McKee"
-]
+people = ["Ian McKee"]
 
 [[Team]]
 id = "Brendan Hoey"
 url = "/src/assets/images/Board/BrendanOfficer.JPG"
 title = "Avionics Lead"
-people = [
-"Brendan Hoey"
-]
+people = ["Brendan Hoey"]
 
 [[Team]]
 id = "Kailyn Carmichael"
 url = "/src/assets/images/Board/KailynOfficer.JPG"
 title = "Treasurer"
-people = [
-"Kailyn Carmichael"
-]
+people = ["Kailyn Carmichael"]
