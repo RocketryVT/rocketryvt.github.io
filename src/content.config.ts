@@ -26,6 +26,6 @@ const teamCollection = defineCollection({
 });
 
 export const collections = {
-  gallery: galleryCollection,
-  team: teamCollection,
+  gallery: galleryCollection
+  // team: teamCollection,
 };
