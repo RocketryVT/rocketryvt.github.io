@@ -1,10 +1,10 @@
-# [[Team]]
-# id = "Daniel Young"
-# url = "/src/assets/images/Board/Old/Daniel_Crop.jpg"
-# title = "Aerostructures Lead"
-# people = [
-#   "Daniel Young"
-# ]
+[[Team]]
+id = "Daniel Young"
+url = "/src/assets/images/Board/Old/Daniel_Crop.jpg"
+title = "Aerostructures Lead"
+people = [
+"Daniel Young"
+]
 
 # [[Team]]
 # id = "Dawsyn Schraiber"
