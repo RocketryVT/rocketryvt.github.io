@@ -1,5 +1,6 @@
 # Team members configuration
-[[Team]]
+teams = []
+
 # [[Team]]
 # id = "Cannon Biscoe"
 # url = "/src/assets/images/Board/CannonOfficer.JPG"
