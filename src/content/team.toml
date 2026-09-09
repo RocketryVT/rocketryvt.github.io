@@ -1,31 +1,39 @@
 [[Team]]
-id = "Daniel Young"
-url = "/src/assets/images/Board/Old/Daniel_Crop.jpg"
-title = "Aerostructures Lead"
+id = "Cannon Biscoe"
+url = "/src/assets/images/Board/CannonOfficer.JPG"
+title = "Team Captain"
 people = [
-"Daniel Young"
+"Cannon Biscoe"
 ]
 
-# [[Team]]
-# id = "Dawsyn Schraiber"
-# url = "/src/assets/images/Board/Old/Dawsyn_Crop.jpeg"
-# title = "Avionics Lead"
-# people = [
-#   "Dawsyn Schraiber"
-# ]
+[[Team]]
+id = "Ethan George"
+url = "/src/assets/images/Board/EthanOfficer.JPG"
+title = "Subsystems Lead"
+people = [
+"Ethan George"
+]
 
-# [[Team]]
-# id = "Ben Anderson"
-# url = "/src/assets/images/Board/Old/Ben.jpg"
-# title = "Subsystems Lead"
-# people = [
-#   "Ben Anderson"
-# ]
+[[Team]]
+id = "Ian McKee"
+url = "/src/assets/images/Board/IanOfficer.JPG"
+title = "Aerostructures Lead"
+people = [
+"Ian McKee"
+]
 
-# [[Team]]
-# id = "Vanessa Bushell"
-# url = "/src/assets/images/Board/Old/vanessa.png"
-# title = "Treasurer"
-# people = [
-#   "Vanessa Bushell"
-# ]
+[[Team]]
+id = "Brendan Hoey"
+url = "/src/assets/images/Board/BrendanOfficer.JPG"
+title = "Avionics Lead"
+people = [
+"Brendan Hoey"
+]
+
+[[Team]]
+id = "Kailyn Carmichael"
+url = "/src/assets/images/Board/KailynOfficer.JPG"
+title = "Treasurer"
+people = [
+"Kailyn Carmichael"
+]
