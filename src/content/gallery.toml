@@ -14,7 +14,7 @@ url = "/src/assets/images/Gallery/noahIREC.JPG"
 alt = "Noah Seacrest at IREC 2026"
 
 [[media]]
-id = "girls at 2026 Ohio TL"
+id = "Nancy, Kira, Minh Tu, & Brady at TL Ohio 2026"
 url = "/src/assets/images/Gallery/nancykiramihntubrady.JPG"
 alt = "Nancy, Kira, Minh Tu, & Brady at TL Ohio 2026"
 
@@ -58,7 +58,6 @@ id = "ErinIREC"
 url = "/src/assets/images/Gallery/ErinIREC2026.JPG"
 alt = "Erin McLoughlin at 2026 IREC launch"
 
---- # Pre-2025 Season
 [[media]]
 id = "sc-feb-testlaunch"
 url = "/src/assets/images/Gallery/sc-feb-testlaunch.jpg"
