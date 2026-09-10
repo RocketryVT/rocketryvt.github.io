@@ -1,9 +1,13 @@
 @import '@fontsource/poppins';
 @import '@fontsource/roboto';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+/* Migrated from tailwind.config.mjs (theme.extend.fontFamily.sans) */
+@theme {
+  --font-sans: 'Poppins', 'Roboto', ui-sans-serif, system-ui, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
 
 :root {
   --background-color: white;

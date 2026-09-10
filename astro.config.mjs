@@ -1,8 +1,8 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
 
 import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
 
 import preact from '@astrojs/preact';
 
@@ -15,5 +15,8 @@ export default defineConfig({
     prefetchAll: true,
     defaultStrategy: 'viewport',
   },
-  integrations: [tailwind(), preact(), sitemap(), partytown({ config: { forward: ['dataLayer.push'] } })]
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  integrations: [preact(), sitemap(), partytown({ config: { forward: ['dataLayer.push'] } })]
 });
